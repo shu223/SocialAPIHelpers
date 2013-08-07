@@ -115,4 +115,27 @@
     [request performRequestWithHandler:handler];
 }
 
+
+// =============================================================================
+#pragma mark - POST direct_messages/new
+
++ (void)sendDirectMessageToScreenName:(NSString *)screenName
+                              message:(NSString *)message
+                              account:(ACAccount *)account
+                              handler:(SLRequestHandler)handler
+{
+    NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1.1/direct_messages/new.json"];
+    
+    NSDictionary *parameters = @{@"text": message,
+                                 @"screen_name": screenName};
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                            requestMethod:SLRequestMethodPOST
+                                                      URL:url
+                                               parameters:parameters];
+    
+    request.account = account;
+    
+    [request performRequestWithHandler:handler];
+}
 @end

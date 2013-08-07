@@ -30,4 +30,9 @@
              account:(ACAccount *)account
              handler:(SLRequestHandler)handler;
 
+// POST direct_messages/new
++ (void)sendDirectMessageToScreenName:(NSString *)screenName
+                              message:(NSString *)message
+                              account:(ACAccount *)account
+                              handler:(SLRequestHandler)handler;
 @end
