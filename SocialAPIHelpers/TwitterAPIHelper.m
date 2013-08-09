@@ -140,21 +140,12 @@
                        handler:(SLRequestHandler)handler
 {
     NSAssert([ids count], @"no IDs");
+    NSAssert([ids count] <= 100, @"too many IDs");
     
     NSMutableString *idsStr = @"".mutableCopy;
-    // > for debug
-    int cnt = 0;
-    // < for debug
     for (NSString *anID in ids) {
         
         [idsStr appendFormat:@"%@,", anID];
-        
-        // > for debug
-        cnt++;
-        if (cnt >= 100) {            
-            break;
-        }
-        // < for debug
     }
     if ([idsStr hasSuffix:@","]) {
         [idsStr deleteCharactersInRange:NSMakeRange([idsStr length] - 1, 1)];
@@ -163,8 +154,6 @@
     NSURL *url = [NSURL URLWithPath:@"users/lookup.json"];
     NSDictionary *parameters = @{@"user_id": idsStr,
                                  @"include_entities": @"false"};
-
-    NSLog(@"parameters:%@", parameters);
 
     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
                                             requestMethod:SLRequestMethodGET
