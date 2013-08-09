@@ -15,14 +15,25 @@
 + (void)userInformationWithScreenName:(NSString *)screenName
                        requestAccount:(ACAccount *)requestAccount
                               handler:(SLRequestHandler)handler;
+
 + (void)userInformationForAccount:(ACAccount *)account
-                       completion:(SLRequestHandler)completion;
+                          handler:(SLRequestHandler)completion;
 
 
 // GET friends/list
 + (void)friendsListForAccount:(ACAccount *)account
                    nextCursor:(NSString *)nextCursor
                       handler:(SLRequestHandler)handler;
+
+// GET friends/ids
++ (void)friendsIdsForAccount:(ACAccount *)account
+                  nextCursor:(NSString *)nextCursor
+                     handler:(SLRequestHandler)handler;
+
+// GET users/lookup
++ (void)userInformationsForIDs:(NSArray *)ids
+                requestAccount:(ACAccount *)requestAccount
+                       handler:(SLRequestHandler)handler;
 
 // POST statuses/update
 + (void)updateStatus:(NSString *)status

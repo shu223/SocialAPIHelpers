@@ -9,8 +9,36 @@
 #import <Accounts/Accounts.h>
 
 
-@implementation TwitterAPIHelper
+#define kBaseURL @"http://api.twitter.com/1.1"
 
+
+#pragma mark -------------------------------------------------------------------
+#pragma mark - Categories
+
+@interface NSURL (Extension)
++ (NSURL *)URLWithPath:(NSString *)path;
+@end
+
+
+@implementation NSURL (Extension)
+
++ (NSURL *)URLWithPath:(NSString *)path {
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", kBaseURL, path];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    return url;
+}
+
+@end
+
+
+
+#pragma mark -------------------------------------------------------------------
+#pragma mark - TwitterAPIHelper
+
+
+@implementation TwitterAPIHelper
 
 // =============================================================================
 #pragma mark - GET users/show
@@ -19,7 +47,7 @@
                        requestAccount:(ACAccount *)requestAccount
                               handler:(SLRequestHandler)handler
 {
-    NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1.1/users/show.json"];
+    NSURL *url = [NSURL URLWithPath:@"users/show.json"];
     NSDictionary *parameters = @{@"screen_name": screenName,
                                  @"include_entities": @"false"};
     
@@ -34,7 +62,7 @@
 }
 
 + (void)userInformationForAccount:(ACAccount *)account
-                       completion:(SLRequestHandler)completion
+                          handler:(SLRequestHandler)completion
 {
     [TwitterAPIHelper userInformationWithScreenName:account.username
                                      requestAccount:account
@@ -49,7 +77,7 @@
                    nextCursor:(NSString *)nextCursor
                       handler:(SLRequestHandler)handler
 {
-    NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1.1/friends/list.json"];
+    NSURL *url = [NSURL URLWithPath:@"friends/list.json"];
     
     NSDictionary *parameters;
     if (nextCursor.intValue > 0) {
@@ -74,6 +102,82 @@
 
 
 // =============================================================================
+#pragma mark - GET friends/ids
+
++ (void)friendsIdsForAccount:(ACAccount *)account
+                  nextCursor:(NSString *)nextCursor
+                     handler:(SLRequestHandler)handler
+{
+    NSURL *url = [NSURL URLWithPath:@"friends/ids.json"];
+    
+    NSDictionary *parameters;
+    if (nextCursor.intValue > 0) {
+        
+        parameters = @{@"cursor": nextCursor};
+    }
+    else {
+        
+        parameters = @{};
+    }
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                            requestMethod:SLRequestMethodGET
+                                                      URL:url
+                                               parameters:parameters];
+    
+    request.account = account;
+    
+    [request performRequestWithHandler:handler];
+}
+
+
+// =============================================================================
+#pragma mark - GET users/lookup
+
+// https://dev.twitter.com/docs/api/1.1/get/users/lookup
++ (void)userInformationsForIDs:(NSArray *)ids
+                requestAccount:(ACAccount *)requestAccount
+                       handler:(SLRequestHandler)handler
+{
+    NSAssert([ids count], @"no IDs");
+    
+    NSMutableString *idsStr = @"".mutableCopy;
+    // > for debug
+    int cnt = 0;
+    // < for debug
+    for (NSString *anID in ids) {
+        
+        [idsStr appendFormat:@"%@,", anID];
+        
+        // > for debug
+        cnt++;
+        if (cnt >= 100) {            
+            break;
+        }
+        // < for debug
+    }
+    if ([idsStr hasSuffix:@","]) {
+        [idsStr deleteCharactersInRange:NSMakeRange([idsStr length] - 1, 1)];
+    }
+    
+    NSURL *url = [NSURL URLWithPath:@"users/lookup.json"];
+    NSDictionary *parameters = @{@"user_id": idsStr,
+                                 @"include_entities": @"false"};
+
+    NSLog(@"parameters:%@", parameters);
+
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                            requestMethod:SLRequestMethodGET
+                                                      URL:url
+                                               parameters:parameters];
+    
+    request.account = requestAccount;
+    
+    [request performRequestWithHandler:handler];
+}
+
+
+// =============================================================================
 #pragma mark - POST statuses/update
 
 + (void)updateStatus:(NSString *)status
@@ -89,11 +193,12 @@
     // 画像あり
     if (withMedia) {
         
-        url = [NSURL URLWithString:@"http://api.twitter.com/1.1/statuses/update_with_media.json"];
+        url = [NSURL URLWithPath:@"statuses/update_with_media.json"];
     }
     // 画像なし
     else {
-        url = [NSURL URLWithString:@"http://api.twitter.com/1.1/statuses/update.json"];
+        
+        url = [NSURL URLWithPath:@"statuses/update.json"];
     }
     
     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
@@ -124,7 +229,7 @@
                               account:(ACAccount *)account
                               handler:(SLRequestHandler)handler
 {
-    NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1.1/direct_messages/new.json"];
+    NSURL *url = [NSURL URLWithPath:@"direct_messages/new.json"];
     
     NSDictionary *parameters = @{@"text": message,
                                  @"screen_name": screenName};
