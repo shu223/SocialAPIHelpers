@@ -90,7 +90,7 @@
     dispatch_async(queue, ^{
        
         [TwitterAPIHelper userInformationForAccount:weakSelf.selectedAccount
-                                         completion:
+                                            handler:
          ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
              
              dispatch_async(dispatch_get_main_queue(), ^{
@@ -111,11 +111,11 @@
                       if (error) {
                           
                           NSLog(@"error:%@", error);
-                      }
-                      else {
                           
-                          NSLog(@"result:%@", result);
+                          return;
                       }
+                      
+                      NSLog(@"result:%@", result);
                   }];;
              });
          }];
@@ -154,11 +154,11 @@
                       if (error) {
                           
                           NSLog(@"error:%@", error);
-                      }
-                      else {
                           
-                          NSLog(@"result:%@", result);
+                          return;
                       }
+                      
+                      NSLog(@"result:%@", result);
                   }];;
              });
          }];
@@ -198,11 +198,11 @@
                       if (error) {
                           
                           NSLog(@"error:%@", error);
-                      }
-                      else {
                           
-                          NSLog(@"result:%@", result);
+                          return;
                       }
+                      
+                      NSLog(@"result:%@", result);
                   }];;
              });
          }];

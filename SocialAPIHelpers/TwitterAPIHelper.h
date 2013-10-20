@@ -21,6 +21,7 @@
                       sinceId:(NSString *)sinceId
                       account:(ACAccount *)account
                       handler:(SLRequestHandler)handler;
+
 + (void)homeTimelineForAccount:(ACAccount *)account
                        handler:(SLRequestHandler)handler;
 
@@ -31,6 +32,7 @@
                            sinceId:(NSString *)sinceId
                            account:(ACAccount *)account
                            handler:(SLRequestHandler)handler;
+
 + (void)userTimelineWithScreenName:(NSString *)screenName
                            account:(ACAccount *)account
                            handler:(SLRequestHandler)handler;
