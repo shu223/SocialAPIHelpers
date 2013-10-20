@@ -13,10 +13,95 @@
 
 
 // =============================================================================
+#pragma mark - GET statuses/home_timeline
+
++ (void)homeTimelineWithCount:(NSUInteger)count
+                      sinceId:(NSString *)sinceId
+                      account:(ACAccount *)account
+                      handler:(SLRequestHandler)handler
+{
+    NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
+    NSMutableDictionary *parameters = @{}.mutableCopy;
+
+    if (count > 0) {
+        
+        parameters[@"count"] = @(count);
+    }
+    
+    if (sinceId) {
+    
+        parameters[@"since_id"] = sinceId;
+    }
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                            requestMethod:SLRequestMethodGET
+                                                      URL:url
+                                               parameters:parameters];
+    
+    request.account = account;
+    
+    [request performRequestWithHandler:handler];
+}
+
++ (void)homeTimelineForAccount:(ACAccount *)account
+                       handler:(SLRequestHandler)handler
+{
+    [TwitterAPIHelper homeTimelineWithCount:20  // default by Twitter
+                                    sinceId:nil
+                                    account:account
+                                    handler:handler];
+}
+
+
+// =============================================================================
+#pragma mark - GET statuses/user_timeline
+
++ (void)userTimelineWithScreenName:(NSString *)screenName
+                             count:(NSUInteger)count
+                           sinceId:(NSString *)sinceId
+                           account:(ACAccount *)account
+                           handler:(SLRequestHandler)handler
+{
+    NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1.1/statuses/user_timeline.json"];
+    NSMutableDictionary *parameters = @{@"screen_name": screenName}.mutableCopy;
+    
+    if (count > 0) {
+        
+        parameters[@"count"] = @(count);
+    }
+    
+    if (sinceId) {
+        
+        parameters[@"since_id"] = sinceId;
+    }
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                            requestMethod:SLRequestMethodGET
+                                                      URL:url
+                                               parameters:parameters];
+    
+    request.account = account;
+    
+    [request performRequestWithHandler:handler];
+}
+
++ (void)userTimelineWithScreenName:(NSString *)screenName
+                           account:(ACAccount *)account
+                           handler:(SLRequestHandler)handler
+{
+    [TwitterAPIHelper userTimelineWithScreenName:screenName
+                                           count:20 // default by Twitter
+                                         sinceId:nil
+                                         account:account
+                                         handler:handler];
+}
+
+
+// =============================================================================
 #pragma mark - GET users/show
 
 + (void)userInformationWithScreenName:(NSString *)screenName
-                       requestAccount:(ACAccount *)requestAccount
+                       account:(ACAccount *)requestAccount
                               handler:(SLRequestHandler)handler
 {
     NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1.1/users/show.json"];
@@ -37,7 +122,7 @@
                        completion:(SLRequestHandler)completion
 {
     [TwitterAPIHelper userInformationWithScreenName:account.username
-                                     requestAccount:account
+                                     account:account
                                             handler:completion];
 }
 

@@ -21,6 +21,12 @@
 		8A372FD318138AFF0004F854 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A372FB518138AFF0004F854 /* UIKit.framework */; };
 		8A372FDB18138AFF0004F854 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A372FD918138AFF0004F854 /* InfoPlist.strings */; };
 		8A372FDD18138AFF0004F854 /* SocialAPIHelpersDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FDC18138AFF0004F854 /* SocialAPIHelpersDemoTests.m */; };
+		8A372FEB18138B2D0004F854 /* FacebookAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FE818138B2D0004F854 /* FacebookAPIHelper.m */; };
+		8A372FEC18138B2D0004F854 /* TwitterAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FEA18138B2D0004F854 /* TwitterAPIHelper.m */; };
+		8A372FEF18138B7D0004F854 /* AccountHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FEE18138B7D0004F854 /* AccountHelper.m */; };
+		8A372FF21813A4DD0004F854 /* SocialHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FF11813A4DD0004F854 /* SocialHelper.m */; };
+		8A372FF81813A5850004F854 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A372FF51813A5850004F854 /* SVProgressHUD.bundle */; };
+		8A372FF91813A5850004F854 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FF71813A5850004F854 /* SVProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,17 @@
 		8A372FD818138AFF0004F854 /* SocialAPIHelpersDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SocialAPIHelpersDemoTests-Info.plist"; sourceTree = "<group>"; };
 		8A372FDA18138AFF0004F854 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8A372FDC18138AFF0004F854 /* SocialAPIHelpersDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocialAPIHelpersDemoTests.m; sourceTree = "<group>"; };
+		8A372FE718138B2D0004F854 /* FacebookAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAPIHelper.h; sourceTree = "<group>"; };
+		8A372FE818138B2D0004F854 /* FacebookAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAPIHelper.m; sourceTree = "<group>"; };
+		8A372FE918138B2D0004F854 /* TwitterAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAPIHelper.h; sourceTree = "<group>"; };
+		8A372FEA18138B2D0004F854 /* TwitterAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAPIHelper.m; sourceTree = "<group>"; };
+		8A372FED18138B7D0004F854 /* AccountHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountHelper.h; sourceTree = "<group>"; };
+		8A372FEE18138B7D0004F854 /* AccountHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountHelper.m; sourceTree = "<group>"; };
+		8A372FF01813A4DD0004F854 /* SocialHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialHelper.h; sourceTree = "<group>"; };
+		8A372FF11813A4DD0004F854 /* SocialHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialHelper.m; sourceTree = "<group>"; };
+		8A372FF51813A5850004F854 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		8A372FF61813A5850004F854 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		8A372FF71813A5850004F854 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +99,8 @@
 		8A372FA518138AFF0004F854 = {
 			isa = PBXGroup;
 			children = (
+				8A372FF31813A5850004F854 /* Vendor */,
+				8A372FE618138B2D0004F854 /* SocialAPIHelpers */,
 				8A372FB718138AFF0004F854 /* SocialAPIHelpersDemo */,
 				8A372FD618138AFF0004F854 /* SocialAPIHelpersDemoTests */,
 				8A372FB018138AFF0004F854 /* Frameworks */,
@@ -150,6 +169,40 @@
 				8A372FD918138AFF0004F854 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8A372FE618138B2D0004F854 /* SocialAPIHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				8A372FE718138B2D0004F854 /* FacebookAPIHelper.h */,
+				8A372FE818138B2D0004F854 /* FacebookAPIHelper.m */,
+				8A372FE918138B2D0004F854 /* TwitterAPIHelper.h */,
+				8A372FEA18138B2D0004F854 /* TwitterAPIHelper.m */,
+				8A372FED18138B7D0004F854 /* AccountHelper.h */,
+				8A372FEE18138B7D0004F854 /* AccountHelper.m */,
+				8A372FF01813A4DD0004F854 /* SocialHelper.h */,
+				8A372FF11813A4DD0004F854 /* SocialHelper.m */,
+			);
+			name = SocialAPIHelpers;
+			path = ../SocialAPIHelpers;
+			sourceTree = "<group>";
+		};
+		8A372FF31813A5850004F854 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				8A372FF41813A5850004F854 /* SVProgressHUD */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		8A372FF41813A5850004F854 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8A372FF51813A5850004F854 /* SVProgressHUD.bundle */,
+				8A372FF61813A5850004F854 /* SVProgressHUD.h */,
+				8A372FF71813A5850004F854 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +284,7 @@
 				8A372FCA18138AFF0004F854 /* Images.xcassets in Resources */,
 				8A372FBC18138AFF0004F854 /* InfoPlist.strings in Resources */,
 				8A372FC518138AFF0004F854 /* Main.storyboard in Resources */,
+				8A372FF81813A5850004F854 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,8 +303,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A372FF21813A4DD0004F854 /* SocialHelper.m in Sources */,
+				8A372FF91813A5850004F854 /* SVProgressHUD.m in Sources */,
 				8A372FC818138AFF0004F854 /* ViewController.m in Sources */,
+				8A372FEF18138B7D0004F854 /* AccountHelper.m in Sources */,
 				8A372FC218138AFF0004F854 /* AppDelegate.m in Sources */,
+				8A372FEC18138B2D0004F854 /* TwitterAPIHelper.m in Sources */,
+				8A372FEB18138B2D0004F854 /* FacebookAPIHelper.m in Sources */,
 				8A372FBE18138AFF0004F854 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +519,7 @@
 				8A372FE218138AFF0004F854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A372FE318138AFF0004F854 /* Build configuration list for PBXNativeTarget "SocialAPIHelpersDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +528,7 @@
 				8A372FE518138AFF0004F854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
