@@ -69,7 +69,7 @@
 
 
 // =============================================================================
-#pragma mark - Puclish
+#pragma mark - Publish
 
 // Publish a new post or Upload a photo
 + (void)postMessage:(NSString *)message
@@ -111,6 +111,43 @@
     }
     
     request.account = account;
+
+    [request performRequestWithHandler:handler];
+}
+
+
+// =============================================================================
+#pragma mark - App Request
+
+// Post an apprequest
+// https://developers.facebook.com/docs/reference/api/user/#apprequests
++ (void)postAppRequestToUserId:(NSString *)userId
+                       message:(NSString *)message
+                    trackingId:(NSString *)trackingId
+                       account:(ACAccount *)account
+                       handler:(SLRequestHandler)handler
+{
+    NSAssert(message, @"message is required");
+    
+    NSMutableDictionary *params = @{@"message": message}.mutableCopy;
+    
+    if (trackingId) {
+        
+        params[@"data"] = trackingId;
+    }
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/apprequests", kBaseURL, userId];
+    
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                            requestMethod:SLRequestMethodPOST
+                                                      URL:url
+                                               parameters:params];
+    
+    request.account = account;
+
+    [request performRequestWithHandler:handler];
 }
 
 @end

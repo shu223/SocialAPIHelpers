@@ -39,8 +39,9 @@
 + (void)userInformationWithScreenName:(NSString *)screenName
                               account:(ACAccount *)account
                               handler:(SLRequestHandler)handler;
+
 + (void)userInformationForAccount:(ACAccount *)account
-                       completion:(SLRequestHandler)completion;
+                          handler:(SLRequestHandler)completion;
 
 
 // GET friends/list
@@ -48,10 +49,25 @@
                    nextCursor:(NSString *)nextCursor
                       handler:(SLRequestHandler)handler;
 
+// GET friends/ids
++ (void)friendsIdsForAccount:(ACAccount *)account
+                  nextCursor:(NSString *)nextCursor
+                     handler:(SLRequestHandler)handler;
+
+// GET users/lookup
++ (void)userInformationsForIDs:(NSArray *)ids
+                requestAccount:(ACAccount *)requestAccount
+                       handler:(SLRequestHandler)handler;
+
 // POST statuses/update
 + (void)updateStatus:(NSString *)status
                image:(UIImage *)image
              account:(ACAccount *)account
              handler:(SLRequestHandler)handler;
 
+// POST direct_messages/new
++ (void)sendDirectMessageToScreenName:(NSString *)screenName
+                              message:(NSString *)message
+                              account:(ACAccount *)account
+                              handler:(SLRequestHandler)handler;
 @end

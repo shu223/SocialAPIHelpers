@@ -28,4 +28,11 @@
             account:(ACAccount *)account
             handler:(SLRequestHandler)handler;
 
+// Post an apprequest
++ (void)postAppRequestToUserId:(NSString *)userId
+                       message:(NSString *)message
+                    trackingId:(NSString *)trackingId
+                       account:(ACAccount *)account
+                       handler:(SLRequestHandler)handler;
+
 @end
