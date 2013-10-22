@@ -22,6 +22,10 @@
 + (void)friendsForAccount:(ACAccount *)account
                   handler:(SLRequestHandler)handler;
 
+// News Feed
++ (void)newsfeedForAccount:(ACAccount *)requestAccount
+                   handler:(SLRequestHandler)handler;
+
 // Publish a new post or Upload a photo
 + (void)postMessage:(NSString *)message
               image:(UIImage *)image

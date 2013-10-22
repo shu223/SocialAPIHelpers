@@ -119,16 +119,27 @@
     return options;
 }
 
-+ (NSDictionary *)optionsToReadOnFacebookWithAppId:(NSString *)appID {
++ (NSDictionary *)optionsToReadBasicInfoOnFacebookWithAppId:(NSString *)appID {
     
     NSAssert([appID length], @"Facebook App ID must be set.");
     
-    // プロフィール情報獲得用のoptionを作成
-    // ダメ:publish_stream, user_about_me
     // http://stackoverflow.com/questions/16472383/parse-facebook-login-app-must-ask-for-basic-read-permission
     NSDictionary *options = @{
                               ACFacebookAppIdKey: appID,
                               ACFacebookPermissionsKey: @[@"basic_info"]
+                              };
+    
+    return options;
+}
+
++ (NSDictionary *)optionsToReadStreamOnFacebookWithAppId:(NSString *)appID {
+
+    NSAssert([appID length], @"Facebook App ID must be set.");
+    
+    // http://stackoverflow.com/questions/16472383/parse-facebook-login-app-must-ask-for-basic-read-permission
+    NSDictionary *options = @{
+                              ACFacebookAppIdKey: appID,
+                              ACFacebookPermissionsKey: @[@"read_stream"]
                               };
     
     return options;

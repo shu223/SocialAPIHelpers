@@ -69,6 +69,26 @@
 
 
 // =============================================================================
+#pragma mark - News Feed
+
++ (void)newsfeedForAccount:(ACAccount *)requestAccount
+                   handler:(SLRequestHandler)handler
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@/me/home", kBaseURL];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                            requestMethod:SLRequestMethodGET
+                                                      URL:url
+                                               parameters:nil];
+    
+    request.account = requestAccount;
+    
+    [request performRequestWithHandler:handler];
+}
+
+
+// =============================================================================
 #pragma mark - Publish
 
 // Publish a new post or Upload a photo

@@ -32,7 +32,9 @@
 
 + (NSDictionary *)optionsToInviteViaFacebookWithAppId:(NSString *)appID;
 
-+ (NSDictionary *)optionsToReadOnFacebookWithAppId:(NSString *)appID;
++ (NSDictionary *)optionsToReadBasicInfoOnFacebookWithAppId:(NSString *)appID;
+
++ (NSDictionary *)optionsToReadStreamOnFacebookWithAppId:(NSString *)appID;
 
 + (NSDictionary *)optionsToWriteOnFacebookWithAppId:(NSString *)appID;
 
