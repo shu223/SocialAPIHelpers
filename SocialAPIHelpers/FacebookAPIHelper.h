@@ -22,6 +22,9 @@
 + (void)friendsForAccount:(ACAccount *)account
                   handler:(SLRequestHandler)handler;
 
+// Profile Picture
++ (NSString *)profilePictureURLForUserId:(NSString *)userId;
+
 // News Feed
 // You can retrieve only posts with a location when "withLocation" is YES
 + (void)newsfeedForAccount:(ACAccount *)requestAccount

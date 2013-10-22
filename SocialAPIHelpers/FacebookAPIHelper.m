@@ -37,6 +37,7 @@
 + (void)userProfileForAccount:(ACAccount *)account
                       handler:(SLRequestHandler)handler
 {
+    // https://developers.facebook.com/docs/reference/api/using-pictures/
     NSString *urlStr = [NSString stringWithFormat:@"%@/me", kBaseURL];
     NSURL *url = [NSURL URLWithString:urlStr];
 
@@ -65,6 +66,17 @@
     request.account = account;
     
     [request performRequestWithHandler:handler];
+}
+
+
+// =============================================================================
+#pragma mark - Pictures
+
++ (NSString *)profilePictureURLForUserId:(NSString *)userId {
+
+    NSString *urlStr = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=square", userId];
+    
+    return urlStr;
 }
 
 
