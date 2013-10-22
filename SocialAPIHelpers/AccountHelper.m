@@ -138,7 +138,7 @@
     
     NSDictionary *options = @{
                               ACFacebookAppIdKey: appID,
-                              ACFacebookPermissionsKey: @[kFBPermissionKeyReadStream]
+                              ACFacebookPermissionsKey: @[kFBPermissionKeyBasicInfo, kFBPermissionKeyReadStream]
                               };
     
     return options;
