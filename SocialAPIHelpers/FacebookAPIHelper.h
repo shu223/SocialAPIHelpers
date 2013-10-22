@@ -23,7 +23,9 @@
                   handler:(SLRequestHandler)handler;
 
 // News Feed
+// You can retrieve only posts with a location when "withLocation" is YES
 + (void)newsfeedForAccount:(ACAccount *)requestAccount
+              withLocation:(BOOL)withLocation
                    handler:(SLRequestHandler)handler;
 
 // Publish a new post or Upload a photo

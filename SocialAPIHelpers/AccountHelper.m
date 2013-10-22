@@ -113,7 +113,7 @@
     
     NSDictionary *options = @{
                               ACFacebookAppIdKey: appID,
-                              ACFacebookPermissionsKey: @[@"email", @"xmpp_login"]
+                              ACFacebookPermissionsKey: @[kFBPermissionKeyEmail, kFBPermissionKeyXMPPLogin]
                               };
     
     return options;
@@ -126,7 +126,7 @@
     // http://stackoverflow.com/questions/16472383/parse-facebook-login-app-must-ask-for-basic-read-permission
     NSDictionary *options = @{
                               ACFacebookAppIdKey: appID,
-                              ACFacebookPermissionsKey: @[@"basic_info"]
+                              ACFacebookPermissionsKey: @[kFBPermissionKeyBasicInfo]
                               };
     
     return options;
@@ -136,10 +136,9 @@
 
     NSAssert([appID length], @"Facebook App ID must be set.");
     
-    // http://stackoverflow.com/questions/16472383/parse-facebook-login-app-must-ask-for-basic-read-permission
     NSDictionary *options = @{
                               ACFacebookAppIdKey: appID,
-                              ACFacebookPermissionsKey: @[@"read_stream"]
+                              ACFacebookPermissionsKey: @[kFBPermissionKeyReadStream]
                               };
     
     return options;
@@ -152,7 +151,7 @@
     // 投稿用のoptionを作成
     NSDictionary *options = @{
                               ACFacebookAppIdKey: appID,
-                              ACFacebookPermissionsKey: @[@"publish_stream"],
+                              ACFacebookPermissionsKey: @[kFBPermissionKeyPublishStream],
                               ACFacebookAudienceKey : ACFacebookAudienceFriends,
                               };
     

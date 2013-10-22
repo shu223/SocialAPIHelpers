@@ -72,10 +72,18 @@
 #pragma mark - News Feed
 
 + (void)newsfeedForAccount:(ACAccount *)requestAccount
+              withLocation:(BOOL)withLocation
                    handler:(SLRequestHandler)handler
 {
+    // https://developers.facebook.com/docs/reference/api/user/#home
     NSString *urlStr = [NSString stringWithFormat:@"%@/me/home", kBaseURL];
+    
     NSURL *url = [NSURL URLWithString:urlStr];
+    
+    NSMutableDictionary *params = @{}.mutableCopy;
+    if (withLocation) {
+        params[@"with"] = @"location";
+    }
     
     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
                                             requestMethod:SLRequestMethodGET

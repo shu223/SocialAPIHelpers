@@ -10,6 +10,13 @@
 #import <Accounts/Accounts.h>
 
 
+#define kFBPermissionKeyEmail           @"email"
+#define kFBPermissionKeyXMPPLogin       @"xmpp_login"
+#define kFBPermissionKeyBasicInfo       @"basic_info"
+#define kFBPermissionKeyReadStream      @"read_stream"
+#define kFBPermissionKeyPublishStream   @"publish_stream"
+
+
 @interface AccountHelper : NSObject
 
 + (void)requestAccessToAccountsWithType:(NSString *)typeIdentifier

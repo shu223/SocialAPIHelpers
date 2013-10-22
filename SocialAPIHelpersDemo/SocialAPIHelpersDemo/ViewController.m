@@ -270,6 +270,7 @@
         ACAccount *account = [AccountHelper facebookAccountWithAccountStore:self.store];
         
         [FacebookAPIHelper newsfeedForAccount:account
+                                 withLocation:NO
                                       handler:
          ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
              
@@ -288,7 +289,24 @@
                           return;
                       }
                       
-                      NSLog(@"result:%@", result);
+                      NSArray *feeds = result[@"data"];
+                      
+                      for (NSDictionary *aFeed in feeds) {
+                          
+                          NSDictionary *fromDic = aFeed[@"from"];
+                          NSArray *likes = aFeed[@"likes"][@"data"];
+                          
+                          NSLog(@"from:%@, message:%@, likes:%lu",
+                                fromDic[@"name"],
+                                aFeed[@"message"],
+                                [likes count]);
+                          NSLog(@"type:%@, title:%@, link:%@, picture:%@, description:%@\n\n",
+                                aFeed[@"type"],
+                                aFeed[@"name"],
+                                aFeed[@"link"],
+                                aFeed[@"picture"],
+                                aFeed[@"description"]);
+                      }
                   }];;
              });
          }];
