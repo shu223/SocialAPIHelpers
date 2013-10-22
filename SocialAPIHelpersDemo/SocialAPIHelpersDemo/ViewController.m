@@ -8,14 +8,17 @@
 
 #import "ViewController.h"
 #import "AccountHelper.h"
-#import "TwitterAPIHelper.h"
 #import "SocialHelper.h"
+#import "FacebookAPIHelper.h"
+#import "TwitterAPIHelper.h"
 #import "SVProgressHUD.h"
+
+
+#define kFacebookAppId @"117100645022644"
 
 
 @interface ViewController ()
 <UIActionSheetDelegate>
-@property (nonatomic, weak) IBOutlet UIButton *userInfoBtn;
 @property (nonatomic, strong) ACAccountStore *store;
 @property (nonatomic, strong) ACAccount *selectedAccount;
 @end
@@ -27,13 +30,64 @@
 {
     [super viewDidLoad];
     
-    __weak ViewController *weakSelf = self;
-    
     self.store = [[ACAccountStore alloc] init];
     
+    [self requestAccessToFacebook];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+// =============================================================================
+#pragma mark - Private
+
+- (void)requestAccessToFacebook {
+    
+    __weak ViewController *weakSelf = self;
+
     [SVProgressHUD showWithStatus:@"Loading..."
                          maskType:SVProgressHUDMaskTypeGradient];
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        
+        NSDictionary *options = [AccountHelper optionsToReadStreamOnFacebookWithAppId:kFacebookAppId];
+        
+        [AccountHelper requestAccessToAccountsWithType:ACAccountTypeIdentifierFacebook
+                                               options:options
+                                                 store:weakSelf.store
+                                               handler:
+         ^(NSError *error) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 [SVProgressHUD dismiss];
+                 
+                 if (error) {
+                     
+                     NSLog(@"error:%@", error);
+                     
+                     return;
+                 }
 
+                 // start requesting access to twitter
+                 [weakSelf requestAccessToTwitter];
+             });
+         }];
+    });
+}
+
+- (void)requestAccessToTwitter {
+
+    __weak ViewController *weakSelf = self;
+
+    [SVProgressHUD showWithStatus:@"Loading..."
+                         maskType:SVProgressHUDMaskTypeGradient];
+    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         
@@ -67,12 +121,6 @@
              });
          }];
     });
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -190,6 +238,44 @@
                      
                      return;
                  }
+                 
+                 [SocialHelper parseSLRequestResponseData:responseData
+                                                  handler:
+                  ^(id result, NSError *error) {
+                      
+                      if (error) {
+                          
+                          NSLog(@"error:%@", error);
+                          
+                          return;
+                      }
+                      
+                      NSLog(@"result:%@", result);
+                  }];;
+             });
+         }];
+    });
+}
+
+- (IBAction)readNewsFeed {
+    
+    __weak ViewController *weakSelf = self;
+    
+    [SVProgressHUD showWithStatus:@"Loading..."
+                         maskType:SVProgressHUDMaskTypeGradient];
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        
+        ACAccount *account = [AccountHelper facebookAccountWithAccountStore:self.store];
+        
+        [FacebookAPIHelper newsfeedForAccount:account
+                                      handler:
+         ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 [SVProgressHUD dismiss];
                  
                  [SocialHelper parseSLRequestResponseData:responseData
                                                   handler:
