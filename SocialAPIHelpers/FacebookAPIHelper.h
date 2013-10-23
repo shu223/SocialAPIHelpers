@@ -27,9 +27,23 @@
 
 // News Feed
 // You can retrieve only posts with a location when "withLocation" is YES
-+ (void)newsfeedForAccount:(ACAccount *)requestAccount
++ (void)newsfeedForAccount:(ACAccount *)account
+                parameters:(NSDictionary *)parameters
               withLocation:(BOOL)withLocation
                    handler:(SLRequestHandler)handler;
+
++ (void)newsfeedForAccount:(ACAccount *)account
+                   handler:(SLRequestHandler)handler;
+
++ (void)newsfeedWithPreviousURL:(NSString *)previousUrl
+                        account:(ACAccount *)account
+                   withLocation:(BOOL)withLocation
+                        handler:(SLRequestHandler)handler;
+
++ (void)newsfeedWithNextURL:(NSString *)nextUrl
+                    account:(ACAccount *)account
+               withLocation:(BOOL)withLocation
+                    handler:(SLRequestHandler)handler;
 
 // Publish a new post or Upload a photo
 + (void)postMessage:(NSString *)message

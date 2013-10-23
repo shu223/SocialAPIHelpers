@@ -6,6 +6,7 @@
 //
 
 #import "FacebookAPIHelper.h"
+#import "NSString+URL.h"
 
 
 #define kBaseURL @"https://graph.facebook.com"
@@ -83,7 +84,8 @@
 // =============================================================================
 #pragma mark - News Feed
 
-+ (void)newsfeedForAccount:(ACAccount *)requestAccount
++ (void)newsfeedForAccount:(ACAccount *)account
+                parameters:(NSDictionary *)parameters
               withLocation:(BOOL)withLocation
                    handler:(SLRequestHandler)handler
 {
@@ -92,7 +94,7 @@
     
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    NSMutableDictionary *params = @{}.mutableCopy;
+    NSMutableDictionary *params = parameters.mutableCopy;
     if (withLocation) {
         params[@"with"] = @"location";
     }
@@ -100,11 +102,51 @@
     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
                                             requestMethod:SLRequestMethodGET
                                                       URL:url
-                                               parameters:nil];
+                                               parameters:params];
     
-    request.account = requestAccount;
+    request.account = account;
     
     [request performRequestWithHandler:handler];
+}
+
++ (void)newsfeedForAccount:(ACAccount *)account
+                   handler:(SLRequestHandler)handler
+{
+    [FacebookAPIHelper newsfeedForAccount:account
+                               parameters:@{}
+                             withLocation:NO
+                                  handler:handler];
+}
+
++ (void)newsfeedWithPreviousURL:(NSString *)previousUrl
+                        account:(ACAccount *)account
+                   withLocation:(BOOL)withLocation
+                        handler:(SLRequestHandler)handler
+{
+    NSDictionary *allParams = [previousUrl dictionaryFromURLString];
+    
+    NSDictionary *params = @{@"since": allParams[@"since"],
+                             @"__previous": allParams[@"__previous"]};
+    
+    [FacebookAPIHelper newsfeedForAccount:account
+                               parameters:params
+                             withLocation:withLocation
+                                  handler:handler];
+}
+
++ (void)newsfeedWithNextURL:(NSString *)nextUrl
+                    account:(ACAccount *)account
+               withLocation:(BOOL)withLocation
+                    handler:(SLRequestHandler)handler
+{
+    NSDictionary *allParams = [nextUrl dictionaryFromURLString];
+    
+    NSDictionary *params = @{@"until": allParams[@"until"]};
+    
+    [FacebookAPIHelper newsfeedForAccount:account
+                               parameters:params
+                             withLocation:withLocation
+                                  handler:handler];
 }
 
 
