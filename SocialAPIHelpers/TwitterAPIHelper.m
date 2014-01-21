@@ -90,7 +90,7 @@
                            account:(ACAccount *)account
                            handler:(SLRequestHandler)handler
 {
-    NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1.1/statuses/user_timeline.json"];
+    NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
     NSMutableDictionary *parameters = @{@"screen_name": screenName}.mutableCopy;
     
     if (count > 0) {

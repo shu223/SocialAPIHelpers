@@ -259,8 +259,6 @@
 
 - (IBAction)readNewsFeed {
     
-    __weak ViewController *weakSelf = self;
-    
     [SVProgressHUD showWithStatus:@"Loading..."
                          maskType:SVProgressHUDMaskTypeGradient];
     
@@ -270,10 +268,8 @@
         ACAccount *account = [AccountHelper facebookAccountWithAccountStore:self.store];
         
         [FacebookAPIHelper newsfeedForAccount:account
-                                 withLocation:NO
                                       handler:
          ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-             
              dispatch_async(dispatch_get_main_queue(), ^{
                  
                  [SVProgressHUD dismiss];
