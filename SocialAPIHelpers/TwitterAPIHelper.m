@@ -318,4 +318,20 @@
     [request performRequestWithHandler:handler];
 }
 
+
+// =============================================================================
+#pragma mark - Others
+
++ (NSDate *)dateOfStatus:(NSDictionary *)status {
+
+    NSString *dateStr = status[@"created_at"];
+    
+    NSDateFormatter *inputFormat = [[NSDateFormatter alloc] init];
+    [inputFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [inputFormat setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
+    NSDate *date = [inputFormat dateFromString:dateStr];
+    
+    return date;
+}
+
 @end

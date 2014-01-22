@@ -72,4 +72,8 @@
                               message:(NSString *)message
                               account:(ACAccount *)account
                               handler:(SLRequestHandler)handler;
+
+// Other
++ (NSDate *)dateOfStatus:(NSDictionary *)status;
+
 @end

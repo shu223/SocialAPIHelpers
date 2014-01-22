@@ -45,6 +45,11 @@
                withLocation:(BOOL)withLocation
                     handler:(SLRequestHandler)handler;
 
+// Posts
++ (void)postsOfUserId:(NSString *)userId
+              account:(ACAccount *)account
+              handler:(SLRequestHandler)handler;
+
 // Publish a new post or Upload a photo
 + (void)postMessage:(NSString *)message
               image:(UIImage *)image
@@ -57,5 +62,9 @@
                     trackingId:(NSString *)trackingId
                        account:(ACAccount *)account
                        handler:(SLRequestHandler)handler;
+
+// Other
++ (NSDate *)dateOfPost:(NSDictionary *)post;
++ (NSArray *)sortedPostsWithLikes:(NSArray *)posts;
 
 @end

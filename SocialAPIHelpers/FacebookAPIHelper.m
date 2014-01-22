@@ -151,6 +151,29 @@
 
 
 // =============================================================================
+#pragma mark - Posts
+
++ (void)postsOfUserId:(NSString *)userId
+              account:(ACAccount *)account
+              handler:(SLRequestHandler)handler
+{
+    // https://developers.facebook.com/docs/graph-api/reference/user/
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/posts", kBaseURL, userId];
+    
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                            requestMethod:SLRequestMethodGET
+                                                      URL:url
+                                               parameters:nil];
+    
+    request.account = account;
+    
+    [request performRequestWithHandler:handler];
+}
+
+
+// =============================================================================
 #pragma mark - Publish
 
 // Publish a new post or Upload a photo
@@ -198,6 +221,7 @@
 }
 
 
+
 // =============================================================================
 #pragma mark - App Request
 
@@ -230,6 +254,52 @@
     request.account = account;
 
     [request performRequestWithHandler:handler];
+}
+
+
+// =============================================================================
+#pragma mark - Others
+
++ (NSDate *)dateOfPost:(NSDictionary *)post {
+    
+    NSString *dateStr = post[@"created_time"];
+    
+    NSDateFormatter *inputFormat = [[NSDateFormatter alloc] init];
+    [inputFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [inputFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+    NSDate *date = [inputFormat dateFromString:dateStr];
+    
+    return date;
+}
+
++ (NSArray *)sortedPostsWithLikes:(NSArray *)posts {
+    
+    NSMutableArray *sorted = @[].mutableCopy;
+    
+    for (NSDictionary *aPost in posts) {
+
+        NSArray *likes = aPost[@"likes"][@"data"];
+
+        BOOL inserted = NO;
+        for (int i=0; i<[sorted count]; i++) {
+            
+            NSDictionary *aSortedPost = sorted[i];
+            NSArray *compareLikes = aSortedPost[@"likes"][@"data"];
+            if ([likes count] > [compareLikes count]) {
+                
+                [sorted insertObject:aPost atIndex:i];
+                
+                inserted = YES;
+                break;
+            }
+        }
+        
+        if (!inserted) {
+            [sorted addObject:aPost];
+        }
+    }
+    
+    return sorted;
 }
 
 @end
