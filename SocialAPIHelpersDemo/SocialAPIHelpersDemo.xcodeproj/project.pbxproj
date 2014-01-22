@@ -27,6 +27,7 @@
 		8A372FF21813A4DD0004F854 /* SocialHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FF11813A4DD0004F854 /* SocialHelper.m */; };
 		8A372FF81813A5850004F854 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A372FF51813A5850004F854 /* SVProgressHUD.bundle */; };
 		8A372FF91813A5850004F854 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FF71813A5850004F854 /* SVProgressHUD.m */; };
+		8AACABD5188F6825002B0336 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AACABD3188F6825002B0336 /* NSString+URL.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,9 @@
 		8A372FF51813A5850004F854 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		8A372FF61813A5850004F854 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		8A372FF71813A5850004F854 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		8AACABD2188F6825002B0336 /* NSString+URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URL.h"; sourceTree = "<group>"; };
+		8AACABD3188F6825002B0336 /* NSString+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
+		8AACABD4188F6825002B0336 /* SocialAPIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialAPIHelpers.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,9 @@
 		8A372FE618138B2D0004F854 /* SocialAPIHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				8AACABD2188F6825002B0336 /* NSString+URL.h */,
+				8AACABD3188F6825002B0336 /* NSString+URL.m */,
+				8AACABD4188F6825002B0336 /* SocialAPIHelpers.h */,
 				8A372FE718138B2D0004F854 /* FacebookAPIHelper.h */,
 				8A372FE818138B2D0004F854 /* FacebookAPIHelper.m */,
 				8A372FE918138B2D0004F854 /* TwitterAPIHelper.h */,
@@ -310,6 +317,7 @@
 				8A372FC218138AFF0004F854 /* AppDelegate.m in Sources */,
 				8A372FEC18138B2D0004F854 /* TwitterAPIHelper.m in Sources */,
 				8A372FEB18138B2D0004F854 /* FacebookAPIHelper.m in Sources */,
+				8AACABD5188F6825002B0336 /* NSString+URL.m in Sources */,
 				8A372FBE18138AFF0004F854 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

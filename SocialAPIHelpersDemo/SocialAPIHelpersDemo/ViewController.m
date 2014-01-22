@@ -7,10 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "AccountHelper.h"
-#import "SocialHelper.h"
-#import "FacebookAPIHelper.h"
-#import "TwitterAPIHelper.h"
+#import "SocialAPIHelpers.h"
 #import "SVProgressHUD.h"
 
 
