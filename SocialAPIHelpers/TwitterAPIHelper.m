@@ -9,7 +9,7 @@
 #import <Accounts/Accounts.h>
 
 
-#define kBaseURL @"http://api.twitter.com/1.1"
+#define kBaseURL @"https://api.twitter.com/1.1"
 
 
 #pragma mark -------------------------------------------------------------------
