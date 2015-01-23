@@ -7,20 +7,40 @@
 //
 
 #import "SLRequest+TTMExtensions.h"
+#import "TTMSocialHelper.h"
+
 
 @implementation SLRequest (TTMExtensions)
 
-- (void)performAsyncRequestWithHandler:(SLRequestHandler)handler {
+//- (void)performAsyncRequestWithHandler:(SLRequestHandler)handler {
+//
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(queue, ^{
+//        
+//        [self performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//
+//                handler(responseData, urlResponse, error);
+//            });
+//        }];
+//    });
+//}
 
+- (void)performAsyncRequestWithHandler:(TTMRequestHandler)handler {
+    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         
         [self performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-
-                handler(responseData, urlResponse, error);
-            });
+            [TTMSocialHelper parseSLRequestResponseData:responseData
+                                                handler:
+             ^(id result, NSError *error) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     handler(result, error);
+                 });
+             }];
         }];
     });
 }

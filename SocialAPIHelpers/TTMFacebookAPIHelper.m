@@ -7,7 +7,6 @@
 
 #import "TTMFacebookAPIHelper.h"
 #import "NSString+URL.h"
-#import "SLRequest+TTMExtensions.h"
 
 
 #define kBaseURL @"https://graph.facebook.com"
@@ -21,7 +20,7 @@
 // The user's profile
 + (void)userProfileWithUserId:(NSString *)userId
                requestAccount:(ACAccount *)requestAccount
-                      handler:(SLRequestHandler)handler
+                      handler:(TTMRequestHandler)handler
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", kBaseURL, userId];
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -33,11 +32,11 @@
 
     request.account = requestAccount;
     
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 + (void)userProfileForAccount:(ACAccount *)account
-                      handler:(SLRequestHandler)handler
+                      handler:(void (^)(TTMFacebookProfile *result, NSError *error))handler
 {
     // https://developers.facebook.com/docs/reference/api/using-pictures/
     NSString *urlStr = [NSString stringWithFormat:@"%@/me", kBaseURL];
@@ -50,12 +49,21 @@
     
     request.account = account;
     
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:^(id result, NSError *error) {
+        
+        if (error) {
+            handler(nil, error);
+            return;
+        }
+        
+        TTMFacebookProfile *profile = [[TTMFacebookProfile alloc] initWithDictionray:result];
+        handler(profile, nil);
+    }];
 }
 
 // The user's friends.
 + (void)friendsForAccount:(ACAccount *)account
-                  handler:(SLRequestHandler)handler
+                  handler:(TTMRequestHandler)handler
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/me/friends", kBaseURL];
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -67,7 +75,7 @@
 
     request.account = account;
     
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 
@@ -88,7 +96,7 @@
 + (void)newsfeedForAccount:(ACAccount *)account
                 parameters:(NSDictionary *)parameters
               withLocation:(BOOL)withLocation
-                   handler:(SLRequestHandler)handler
+                   handler:(TTMRequestHandler)handler
 {
     // https://developers.facebook.com/docs/reference/api/user/#home
     NSString *urlStr = [NSString stringWithFormat:@"%@/me/home", kBaseURL];
@@ -111,7 +119,7 @@
 }
 
 + (void)newsfeedForAccount:(ACAccount *)account
-                   handler:(SLRequestHandler)handler
+                   handler:(TTMRequestHandler)handler
 {
     [TTMFacebookAPIHelper newsfeedForAccount:account
                                parameters:@{}
@@ -122,7 +130,7 @@
 + (void)newsfeedWithPreviousURL:(NSString *)previousUrl
                         account:(ACAccount *)account
                    withLocation:(BOOL)withLocation
-                        handler:(SLRequestHandler)handler
+                        handler:(TTMRequestHandler)handler
 {
     NSDictionary *allParams = [previousUrl dictionaryFromURLString];
     
@@ -138,7 +146,7 @@
 + (void)newsfeedWithNextURL:(NSString *)nextUrl
                     account:(ACAccount *)account
                withLocation:(BOOL)withLocation
-                    handler:(SLRequestHandler)handler
+                    handler:(TTMRequestHandler)handler
 {
     NSDictionary *allParams = [nextUrl dictionaryFromURLString];
     
@@ -156,7 +164,7 @@
 
 + (void)postsOfUserId:(NSString *)userId
               account:(ACAccount *)account
-              handler:(SLRequestHandler)handler
+              handler:(TTMRequestHandler)handler
 {
     // https://developers.facebook.com/docs/graph-api/reference/user/
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/posts", kBaseURL, userId];
@@ -181,7 +189,7 @@
 + (void)postMessage:(NSString *)message
               image:(UIImage *)image
             account:(ACAccount *)account
-            handler:(SLRequestHandler)handler
+            handler:(TTMRequestHandler)handler
 {
     NSDictionary *params = @{@"message": message};
     
@@ -232,7 +240,7 @@
                        message:(NSString *)message
                     trackingId:(NSString *)trackingId
                        account:(ACAccount *)account
-                       handler:(SLRequestHandler)handler
+                       handler:(TTMRequestHandler)handler
 {
     NSAssert(message, @"message is required");
     
@@ -254,7 +262,7 @@
     
     request.account = account;
 
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 

@@ -106,29 +106,19 @@
 
     [SVProgressHUD showWithStatus:@"Loading..."
                          maskType:SVProgressHUDMaskTypeGradient];
-    
+
     [TTMTwitterAPIHelper userInformationForAccount:self.selectedAccount
-                                        handler:
-     ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-         
+                                           handler:
+     ^(id result, NSError *error) {
+
          [SVProgressHUD dismiss];
-         
+
          if (error) {
              NSLog(@"error:%@", error);
              return;
          }
          
-         [TTMSocialHelper parseSLRequestResponseData:responseData
-                                          handler:
-          ^(id result, NSError *error) {
-              
-              if (error) {
-                  NSLog(@"error:%@", error);
-                  return;
-              }
-              
-              NSLog(@"result:%@", result);
-          }];;
+         NSLog(@"result:%@", result);
      }];
 }
 
@@ -136,10 +126,10 @@
 
     [SVProgressHUD showWithStatus:@"Loading..."
                          maskType:SVProgressHUDMaskTypeGradient];
-    
+
     [TTMTwitterAPIHelper homeTimelineForAccount:self.selectedAccount
-                                     handler:
-     ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                                        handler:
+     ^(id result, NSError *error) {
          
          [SVProgressHUD dismiss];
          
@@ -148,17 +138,7 @@
              return;
          }
          
-         [TTMSocialHelper parseSLRequestResponseData:responseData
-                                          handler:
-          ^(id result, NSError *error) {
-              
-              if (error) {
-                  NSLog(@"error:%@", error);
-                  return;
-              }
-              
-              NSLog(@"result:%@", result);
-          }];;
+         NSLog(@"result:%@", result);
      }];
 }
 
@@ -166,11 +146,11 @@
     
     [SVProgressHUD showWithStatus:@"Loading..."
                          maskType:SVProgressHUDMaskTypeGradient];
-    
+
     [TTMTwitterAPIHelper userTimelineWithScreenName:@"shu223"
-                                         account:self.selectedAccount
-                                         handler:
-     ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                                            account:self.selectedAccount
+                                            handler:
+     ^(id result, NSError *error) {
          
          [SVProgressHUD dismiss];
          
@@ -179,17 +159,7 @@
              return;
          }
          
-         [TTMSocialHelper parseSLRequestResponseData:responseData
-                                          handler:
-          ^(id result, NSError *error) {
-              
-              if (error) {
-                  NSLog(@"error:%@", error);
-                  return;
-              }
-              
-              NSLog(@"result:%@", result);
-          }];;
+         NSLog(@"result:%@", result);
      }];
 }
 
@@ -199,41 +169,36 @@
                          maskType:SVProgressHUDMaskTypeGradient];
     
     ACAccount *account = [TTMAccountHelper facebookAccountWithAccountStore:self.store];
-    
+
     [TTMFacebookAPIHelper newsfeedForAccount:account
-                                  handler:
-     ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                                     handler:
+     ^(id result, NSError *error) {
          
          [SVProgressHUD dismiss];
          
-         [TTMSocialHelper parseSLRequestResponseData:responseData
-                                          handler:
-          ^(id result, NSError *error) {
-              
-              if (error) {
-                  NSLog(@"error:%@", error);
-                  return;
-              }
-              
-              NSArray *feeds = result[@"data"];
-              
-              for (NSDictionary *aFeed in feeds) {
-                  
-                  NSDictionary *fromDic = aFeed[@"from"];
-                  NSArray *likes = aFeed[@"likes"][@"data"];
-                  
-                  NSLog(@"from:%@, message:%@, likes:%lu",
-                        fromDic[@"name"],
-                        aFeed[@"message"],
-                        [likes count]);
-                  NSLog(@"type:%@, title:%@, link:%@, picture:%@, description:%@\n\n",
-                        aFeed[@"type"],
-                        aFeed[@"name"],
-                        aFeed[@"link"],
-                        aFeed[@"picture"],
-                        aFeed[@"description"]);
-              }
-          }];;
+         if (error) {
+             NSLog(@"error:%@", error);
+             return;
+         }
+         
+         NSArray *feeds = result[@"data"];
+         
+         for (NSDictionary *aFeed in feeds) {
+             
+             NSDictionary *fromDic = aFeed[@"from"];
+             NSArray *likes = aFeed[@"likes"][@"data"];
+             
+             NSLog(@"from:%@, message:%@, likes:%lu",
+                   fromDic[@"name"],
+                   aFeed[@"message"],
+                   [likes count]);
+             NSLog(@"type:%@, title:%@, link:%@, picture:%@, description:%@\n\n",
+                   aFeed[@"type"],
+                   aFeed[@"name"],
+                   aFeed[@"link"],
+                   aFeed[@"picture"],
+                   aFeed[@"description"]);
+         }
      }];
 }
 

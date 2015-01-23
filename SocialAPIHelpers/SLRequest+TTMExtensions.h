@@ -8,8 +8,12 @@
 
 #import <Social/Social.h>
 
+
+typedef void(^TTMRequestHandler)(id result, NSError *error);
+
+
 @interface SLRequest (TTMExtensions)
 
-- (void)performAsyncRequestWithHandler:(SLRequestHandler)handler;
+- (void)performAsyncRequestWithHandler:(TTMRequestHandler)handler;
 
 @end

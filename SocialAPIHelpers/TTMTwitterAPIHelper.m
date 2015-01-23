@@ -7,7 +7,6 @@
 
 #import "TTMTwitterAPIHelper.h"
 #import <Accounts/Accounts.h>
-#import "SLRequest+TTMExtensions.h"
 
 
 #define kBaseURL @"https://api.twitter.com/1.1"
@@ -47,7 +46,7 @@
 + (void)homeTimelineWithCount:(NSUInteger)count
                       sinceId:(NSString *)sinceId
                       account:(ACAccount *)account
-                      handler:(SLRequestHandler)handler
+                      handler:(TTMRequestHandler)handler
 {
     NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
     NSMutableDictionary *parameters = @{}.mutableCopy;
@@ -73,7 +72,7 @@
 }
 
 + (void)homeTimelineForAccount:(ACAccount *)account
-                       handler:(SLRequestHandler)handler
+                       handler:(TTMRequestHandler)handler
 {
     [TTMTwitterAPIHelper homeTimelineWithCount:20  // default by Twitter
                                     sinceId:nil
@@ -89,7 +88,7 @@
                              count:(NSUInteger)count
                            sinceId:(NSString *)sinceId
                            account:(ACAccount *)account
-                           handler:(SLRequestHandler)handler
+                           handler:(TTMRequestHandler)handler
 {
     NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
     NSMutableDictionary *parameters = @{@"screen_name": screenName}.mutableCopy;
@@ -116,7 +115,7 @@
 
 + (void)userTimelineWithScreenName:(NSString *)screenName
                            account:(ACAccount *)account
-                           handler:(SLRequestHandler)handler
+                           handler:(TTMRequestHandler)handler
 {
     [TTMTwitterAPIHelper userTimelineWithScreenName:screenName
                                            count:20 // default by Twitter
@@ -131,7 +130,7 @@
 
 + (void)userInformationWithScreenName:(NSString *)screenName
                               account:(ACAccount *)requestAccount
-                              handler:(SLRequestHandler)handler
+                              handler:(TTMRequestHandler)handler
 {
     NSURL *url = [NSURL URLWithPath:@"users/show.json"];
     NSDictionary *parameters = @{@"screen_name": screenName,
@@ -148,7 +147,7 @@
 }
 
 + (void)userInformationForAccount:(ACAccount *)account
-                          handler:(SLRequestHandler)completion
+                          handler:(TTMRequestHandler)completion
 {
     [TTMTwitterAPIHelper userInformationWithScreenName:account.username
                                             account:account
@@ -161,7 +160,7 @@
 
 + (void)friendsListForAccount:(ACAccount *)account
                    nextCursor:(NSString *)nextCursor
-                      handler:(SLRequestHandler)handler
+                      handler:(TTMRequestHandler)handler
 {
     NSURL *url = [NSURL URLWithPath:@"friends/list.json"];
     
@@ -183,7 +182,7 @@
     
     request.account = account;
     
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 
@@ -192,7 +191,7 @@
 
 + (void)friendsIdsForAccount:(ACAccount *)account
                   nextCursor:(NSString *)nextCursor
-                     handler:(SLRequestHandler)handler
+                     handler:(TTMRequestHandler)handler
 {
     NSURL *url = [NSURL URLWithPath:@"friends/ids.json"];
     
@@ -213,7 +212,7 @@
     
     request.account = account;
     
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 
@@ -223,7 +222,7 @@
 // https://dev.twitter.com/docs/api/1.1/get/users/lookup
 + (void)userInformationsForIDs:(NSArray *)ids
                 requestAccount:(ACAccount *)requestAccount
-                       handler:(SLRequestHandler)handler
+                       handler:(TTMRequestHandler)handler
 {
     NSAssert([ids count], @"no IDs");
     NSAssert([ids count] <= 100, @"too many IDs");
@@ -248,7 +247,7 @@
     
     request.account = requestAccount;
     
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 
@@ -258,7 +257,7 @@
 + (void)updateStatus:(NSString *)status
                image:(UIImage *)image
              account:(ACAccount *)account
-             handler:(SLRequestHandler)handler
+             handler:(TTMRequestHandler)handler
 {
     BOOL withMedia = [image isKindOfClass:[UIImage class]] ? YES : NO;
     
@@ -292,7 +291,7 @@
     
     request.account = account;
 
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 
@@ -302,7 +301,7 @@
 + (void)sendDirectMessageToScreenName:(NSString *)screenName
                               message:(NSString *)message
                               account:(ACAccount *)account
-                              handler:(SLRequestHandler)handler
+                              handler:(TTMRequestHandler)handler
 {
     NSURL *url = [NSURL URLWithPath:@"direct_messages/new.json"];
     
@@ -316,7 +315,7 @@
     
     request.account = account;
     
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 

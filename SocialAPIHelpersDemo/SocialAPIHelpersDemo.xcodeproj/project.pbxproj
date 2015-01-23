@@ -29,6 +29,7 @@
 		8A516CF61A725D3A0032085A /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A516CF11A725D3A0032085A /* SVIndefiniteAnimatedView.m */; };
 		8A516CF71A725D3A0032085A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A516CF31A725D3A0032085A /* SVProgressHUD.bundle */; };
 		8A516CF81A725D3A0032085A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A516CF51A725D3A0032085A /* SVProgressHUD.m */; };
+		8A516D001A7269C80032085A /* TTMFacebookProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A516CFF1A7269C80032085A /* TTMFacebookProfile.m */; };
 		8AACABD5188F6825002B0336 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AACABD3188F6825002B0336 /* NSString+URL.m */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		8A516CF31A725D3A0032085A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		8A516CF41A725D3A0032085A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		8A516CF51A725D3A0032085A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		8A516CFE1A7269C80032085A /* TTMFacebookProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFacebookProfile.h; sourceTree = "<group>"; };
+		8A516CFF1A7269C80032085A /* TTMFacebookProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFacebookProfile.m; sourceTree = "<group>"; };
 		8AACABD2188F6825002B0336 /* NSString+URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URL.h"; sourceTree = "<group>"; };
 		8AACABD3188F6825002B0336 /* NSString+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
 		8AACABD4188F6825002B0336 /* SocialAPIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialAPIHelpers.h; sourceTree = "<group>"; };
@@ -186,12 +189,14 @@
 			isa = PBXGroup;
 			children = (
 				8AACABD4188F6825002B0336 /* SocialAPIHelpers.h */,
-				8AACABD2188F6825002B0336 /* NSString+URL.h */,
-				8AACABD3188F6825002B0336 /* NSString+URL.m */,
 				8A372FE718138B2D0004F854 /* TTMFacebookAPIHelper.h */,
 				8A372FE818138B2D0004F854 /* TTMFacebookAPIHelper.m */,
 				8A372FE918138B2D0004F854 /* TTMTwitterAPIHelper.h */,
 				8A372FEA18138B2D0004F854 /* TTMTwitterAPIHelper.m */,
+				8A516CFE1A7269C80032085A /* TTMFacebookProfile.h */,
+				8A516CFF1A7269C80032085A /* TTMFacebookProfile.m */,
+				8AACABD2188F6825002B0336 /* NSString+URL.h */,
+				8AACABD3188F6825002B0336 /* NSString+URL.m */,
 				8A372FED18138B7D0004F854 /* TTMAccountHelper.h */,
 				8A372FEE18138B7D0004F854 /* TTMAccountHelper.m */,
 				8A372FF01813A4DD0004F854 /* TTMSocialHelper.h */,
@@ -333,6 +338,7 @@
 				8A516CEE1A7259830032085A /* SLRequest+TTMExtensions.m in Sources */,
 				8A516CF81A725D3A0032085A /* SVProgressHUD.m in Sources */,
 				8A372FBE18138AFF0004F854 /* main.m in Sources */,
+				8A516D001A7269C80032085A /* TTMFacebookProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

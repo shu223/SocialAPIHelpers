@@ -5,8 +5,8 @@
 //  Copyright (c) 2013 Shuichi Tsutsumi. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <Social/Social.h>
+#import "SLRequest+TTMExtensions.h"
 
 
 #define kAPIResponseKeyRTCount          @"retweet_count"
@@ -20,10 +20,10 @@
 + (void)homeTimelineWithCount:(NSUInteger)count
                       sinceId:(NSString *)sinceId
                       account:(ACAccount *)account
-                      handler:(SLRequestHandler)handler;
+                      handler:(TTMRequestHandler)handler;
 
 + (void)homeTimelineForAccount:(ACAccount *)account
-                       handler:(SLRequestHandler)handler;
+                       handler:(TTMRequestHandler)handler;
 
 
 // GET statuses/user_timeline
@@ -31,47 +31,47 @@
                              count:(NSUInteger)count
                            sinceId:(NSString *)sinceId
                            account:(ACAccount *)account
-                           handler:(SLRequestHandler)handler;
+                           handler:(TTMRequestHandler)handler;
 
 + (void)userTimelineWithScreenName:(NSString *)screenName
                            account:(ACAccount *)account
-                           handler:(SLRequestHandler)handler;
+                           handler:(TTMRequestHandler)handler;
 
 // GET users/show
 + (void)userInformationWithScreenName:(NSString *)screenName
                               account:(ACAccount *)account
-                              handler:(SLRequestHandler)handler;
+                              handler:(TTMRequestHandler)handler;
 
 + (void)userInformationForAccount:(ACAccount *)account
-                          handler:(SLRequestHandler)completion;
+                          handler:(TTMRequestHandler)completion;
 
 
 // GET friends/list
 + (void)friendsListForAccount:(ACAccount *)account
                    nextCursor:(NSString *)nextCursor
-                      handler:(SLRequestHandler)handler;
+                      handler:(TTMRequestHandler)handler;
 
 // GET friends/ids
 + (void)friendsIdsForAccount:(ACAccount *)account
                   nextCursor:(NSString *)nextCursor
-                     handler:(SLRequestHandler)handler;
+                     handler:(TTMRequestHandler)handler;
 
 // GET users/lookup
 + (void)userInformationsForIDs:(NSArray *)ids
                 requestAccount:(ACAccount *)requestAccount
-                       handler:(SLRequestHandler)handler;
+                       handler:(TTMRequestHandler)handler;
 
 // POST statuses/update
 + (void)updateStatus:(NSString *)status
                image:(UIImage *)image
              account:(ACAccount *)account
-             handler:(SLRequestHandler)handler;
+             handler:(TTMRequestHandler)handler;
 
 // POST direct_messages/new
 + (void)sendDirectMessageToScreenName:(NSString *)screenName
                               message:(NSString *)message
                               account:(ACAccount *)account
-                              handler:(SLRequestHandler)handler;
+                              handler:(TTMRequestHandler)handler;
 
 // Other
 + (NSDate *)dateOfStatus:(NSDictionary *)status;
