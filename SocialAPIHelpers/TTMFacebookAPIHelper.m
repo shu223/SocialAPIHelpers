@@ -5,14 +5,15 @@
 //  Copyright (c) 2013 Shuichi Tsutsumi. All rights reserved.
 //
 
-#import "FacebookAPIHelper.h"
+#import "TTMFacebookAPIHelper.h"
 #import "NSString+URL.h"
+#import "SLRequest+TTMExtensions.h"
 
 
 #define kBaseURL @"https://graph.facebook.com"
 
 
-@implementation FacebookAPIHelper
+@implementation TTMFacebookAPIHelper
 
 // =============================================================================
 #pragma mark - User
@@ -105,14 +106,14 @@
                                                parameters:params];
     
     request.account = account;
-    
-    [request performRequestWithHandler:handler];
+
+    [request performAsyncRequestWithHandler:handler];
 }
 
 + (void)newsfeedForAccount:(ACAccount *)account
                    handler:(SLRequestHandler)handler
 {
-    [FacebookAPIHelper newsfeedForAccount:account
+    [TTMFacebookAPIHelper newsfeedForAccount:account
                                parameters:@{}
                              withLocation:NO
                                   handler:handler];
@@ -128,7 +129,7 @@
     NSDictionary *params = @{@"since": allParams[@"since"],
                              @"__previous": allParams[@"__previous"]};
     
-    [FacebookAPIHelper newsfeedForAccount:account
+    [TTMFacebookAPIHelper newsfeedForAccount:account
                                parameters:params
                              withLocation:withLocation
                                   handler:handler];
@@ -143,7 +144,7 @@
     
     NSDictionary *params = @{@"until": allParams[@"until"]};
     
-    [FacebookAPIHelper newsfeedForAccount:account
+    [TTMFacebookAPIHelper newsfeedForAccount:account
                                parameters:params
                              withLocation:withLocation
                                   handler:handler];
@@ -168,8 +169,8 @@
                                                parameters:nil];
     
     request.account = account;
-    
-    [request performRequestWithHandler:handler];
+
+    [request performAsyncRequestWithHandler:handler];
 }
 
 
@@ -183,9 +184,9 @@
             handler:(SLRequestHandler)handler
 {
     NSDictionary *params = @{@"message": message};
-
+    
     BOOL withMedia = [image isKindOfClass:[UIImage class]] ? YES : NO;
-
+    
     NSString *urlStr;
     
     if (withMedia) {
@@ -198,7 +199,7 @@
         // https://developers.facebook.com/docs/reference/api/post/
         urlStr = @"https://graph.facebook.com/me/feed";
     }
-
+    
     NSURL *url = [NSURL URLWithString:urlStr];
     
     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
@@ -217,7 +218,7 @@
     
     request.account = account;
 
-    [request performRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:handler];
 }
 
 

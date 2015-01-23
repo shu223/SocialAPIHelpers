@@ -1,16 +1,16 @@
 //
 //  AccountHelper.m
-//  SocialAPIHelpersDemo
+//  SocialAPIHelpers
 //
 //  Created by shuichi on 10/20/13.
 //  Copyright (c) 2013 Shuichi Tsutsumi. All rights reserved.
 //
 
-#import "AccountHelper.h"
+#import "TTMAccountHelper.h"
 #import <Social/Social.h>
 
 
-@implementation AccountHelper
+@implementation TTMAccountHelper
 
 + (void)requestAccessToAccountsWithType:(NSString *)typeIdentifier
                                 options:(NSDictionary *)options
@@ -19,48 +19,53 @@
 {
     ACAccountType *type = [store accountTypeWithAccountTypeIdentifier:typeIdentifier];
     
-    [store requestAccessToAccountsWithType:type
-                                   options:options
-                                completion:
-     ^(BOOL granted, NSError *error) {
-         
-         if (error) {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        
+        [store requestAccessToAccountsWithType:type
+                                       options:options
+                                    completion:
+         ^(BOOL granted, NSError *error) {
              
-             handler(error);
-         }
-         // no error, but not granted
-         else if (!granted) {
-             
-             NSError *err = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
-                                                code:1
-                                            userInfo:@{NSLocalizedDescriptionKey: @"not granted."}];
-             handler(err);
-         }
-         // granted!
-         else {
-             
-             // http://stackoverflow.com/questions/13349187/strange-behaviour-when-trying-to-use-twitter-acaccount
-             if ([typeIdentifier isEqualToString:ACAccountTypeIdentifierTwitter]) {
+             if (error) {
+
+             }
+             // no error, but not granted
+             else if (!granted) {
                  
-                 ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+                 error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
+                                             code:1
+                                         userInfo:@{NSLocalizedDescriptionKey: @"not granted."}];
+             }
+             // granted!
+             else {
                  
-                 NSArray *accounts = [store accountsWithAccountType:accountType];
-                 
-                 for (ACAccount *anAccount in accounts) {
+                 // http://stackoverflow.com/questions/13349187/strange-behaviour-when-trying-to-use-twitter-acaccount
+                 if ([typeIdentifier isEqualToString:ACAccountTypeIdentifierTwitter]) {
                      
-                     anAccount.accountType = accountType;
+                     ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+                     
+                     NSArray *accounts = [store accountsWithAccountType:accountType];
+                     
+                     for (ACAccount *anAccount in accounts) {
+                         
+                         anAccount.accountType = accountType;
+                     }
                  }
              }
              
-             handler(nil);
-         }
-     }];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 handler(error);
+             });
+         }];
+    });
 }
 
 + (void)requestAccessToTwitterAccountsWithStore:(ACAccountStore *)store
                                         handler:(void (^)(NSError *error))handler
 {
-    [AccountHelper requestAccessToAccountsWithType:ACAccountTypeIdentifierTwitter
+    [TTMAccountHelper requestAccessToAccountsWithType:ACAccountTypeIdentifierTwitter
                                            options:nil
                                              store:store
                                            handler:handler];
@@ -92,7 +97,7 @@
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];
     
-    NSArray *accounts = [AccountHelper twitterAccountsWithAccountStore:store];
+    NSArray *accounts = [TTMAccountHelper twitterAccountsWithAccountStore:store];
     
     for (ACAccount *anAccount in accounts) {
         

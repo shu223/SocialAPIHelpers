@@ -1,14 +1,14 @@
 //
 //  SocialHelper.m
-//  SocialAPIHelpersDemo
+//  SocialAPIHelpers
 //
 //  Created by shuichi on 10/20/13.
 //  Copyright (c) 2013 Shuichi Tsutsumi. All rights reserved.
 //
 
-#import "SocialHelper.h"
+#import "TTMSocialHelper.h"
 
-@implementation SocialHelper
+@implementation TTMSocialHelper
 
 + (void)parseSLRequestResponseData:(NSData *)responseData
                            handler:(void (^)(id result, NSError *error))handler

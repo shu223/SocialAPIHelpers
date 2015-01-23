@@ -1,6 +1,6 @@
 //
 //  AccountHelper.h
-//  SocialAPIHelpersDemo
+//  SocialAPIHelpers
 //
 //  Created by shuichi on 10/20/13.
 //  Copyright (c) 2013 Shuichi Tsutsumi. All rights reserved.
@@ -17,7 +17,7 @@
 #define kFBPermissionKeyPublishStream   @"publish_stream"
 
 
-@interface AccountHelper : NSObject
+@interface TTMAccountHelper : NSObject
 
 + (void)requestAccessToAccountsWithType:(NSString *)typeIdentifier
                                 options:(NSDictionary *)options

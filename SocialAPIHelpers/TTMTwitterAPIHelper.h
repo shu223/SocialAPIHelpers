@@ -14,7 +14,7 @@
 #define kAPIResponseKeyRetweetedStatus  @"retweeted_status"
 
 
-@interface TwitterAPIHelper : NSObject
+@interface TTMTwitterAPIHelper : NSObject
 
 // GET statuses/home_timeline
 + (void)homeTimelineWithCount:(NSUInteger)count

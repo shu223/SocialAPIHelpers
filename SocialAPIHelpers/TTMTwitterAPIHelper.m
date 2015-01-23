@@ -5,8 +5,9 @@
 //  Copyright (c) 2013 Shuichi Tsutsumi. All rights reserved.
 //
 
-#import "TwitterAPIHelper.h"
+#import "TTMTwitterAPIHelper.h"
 #import <Accounts/Accounts.h>
+#import "SLRequest+TTMExtensions.h"
 
 
 #define kBaseURL @"https://api.twitter.com/1.1"
@@ -38,7 +39,7 @@
 #pragma mark - TwitterAPIHelper
 
 
-@implementation TwitterAPIHelper
+@implementation TTMTwitterAPIHelper
 
 // =============================================================================
 #pragma mark - GET statuses/home_timeline
@@ -50,14 +51,14 @@
 {
     NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
     NSMutableDictionary *parameters = @{}.mutableCopy;
-
+    
     if (count > 0) {
         
         parameters[@"count"] = @(count);
     }
     
     if (sinceId) {
-    
+        
         parameters[@"since_id"] = sinceId;
     }
     
@@ -67,14 +68,14 @@
                                                parameters:parameters];
     
     request.account = account;
-    
-    [request performRequestWithHandler:handler];
+
+    [request performAsyncRequestWithHandler:handler];
 }
 
 + (void)homeTimelineForAccount:(ACAccount *)account
                        handler:(SLRequestHandler)handler
 {
-    [TwitterAPIHelper homeTimelineWithCount:20  // default by Twitter
+    [TTMTwitterAPIHelper homeTimelineWithCount:20  // default by Twitter
                                     sinceId:nil
                                     account:account
                                     handler:handler];
@@ -109,15 +110,15 @@
                                                parameters:parameters];
     
     request.account = account;
-    
-    [request performRequestWithHandler:handler];
+
+    [request performAsyncRequestWithHandler:handler];
 }
 
 + (void)userTimelineWithScreenName:(NSString *)screenName
                            account:(ACAccount *)account
                            handler:(SLRequestHandler)handler
 {
-    [TwitterAPIHelper userTimelineWithScreenName:screenName
+    [TTMTwitterAPIHelper userTimelineWithScreenName:screenName
                                            count:20 // default by Twitter
                                          sinceId:nil
                                          account:account
@@ -129,7 +130,7 @@
 #pragma mark - GET users/show
 
 + (void)userInformationWithScreenName:(NSString *)screenName
-                       account:(ACAccount *)requestAccount
+                              account:(ACAccount *)requestAccount
                               handler:(SLRequestHandler)handler
 {
     NSURL *url = [NSURL URLWithPath:@"users/show.json"];
@@ -142,15 +143,15 @@
                                                parameters:parameters];
     
     request.account = requestAccount;
-    
-    [request performRequestWithHandler:handler];
+
+    [request performAsyncRequestWithHandler:handler];
 }
 
 + (void)userInformationForAccount:(ACAccount *)account
                           handler:(SLRequestHandler)completion
 {
-    [TwitterAPIHelper userInformationWithScreenName:account.username
-                                     account:account
+    [TTMTwitterAPIHelper userInformationWithScreenName:account.username
+                                            account:account
                                             handler:completion];
 }
 

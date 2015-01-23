@@ -9,7 +9,7 @@
 #import <Social/Social.h>
 
 
-@interface FacebookAPIHelper : NSObject
+@interface TTMFacebookAPIHelper : NSObject
 
 // The user's profile
 + (void)userProfileWithUserId:(NSString *)userId

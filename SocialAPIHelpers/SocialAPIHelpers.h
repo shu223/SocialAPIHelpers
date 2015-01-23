@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Shuichi Tsutsumi. All rights reserved.
 //
 
-#import "AccountHelper.h"
-#import "SocialHelper.h"
-#import "FacebookAPIHelper.h"
-#import "TwitterAPIHelper.h"
+#import "TTMAccountHelper.h"
+#import "TTMSocialHelper.h"
+#import "TTMFacebookAPIHelper.h"
+#import "TTMTwitterAPIHelper.h"
