@@ -150,8 +150,8 @@
                           handler:(TTMRequestHandler)completion
 {
     [TTMTwitterAPIHelper userInformationWithScreenName:account.username
-                                            account:account
-                                            handler:completion];
+                                               account:account
+                                               handler:completion];
 }
 
 

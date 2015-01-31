@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A3028861A7CDDA200BF59D3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3028851A7CDDA200BF59D3 /* RootViewController.m */; };
+		8A3028921A7CE29E00BF59D3 /* TTMAccountStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3028911A7CE29E00BF59D3 /* TTMAccountStoreManager.m */; };
+		8A3028961A7CEB5900BF59D3 /* TTMCommonButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3028951A7CEB5900BF59D3 /* TTMCommonButton.m */; };
+		8A3028981A7CEC0800BF59D3 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3028971A7CEC0800BF59D3 /* Launch Screen.xib */; };
+		8A30289B1A7CEEA300BF59D3 /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A30289A1A7CEEA300BF59D3 /* TwitterViewController.m */; };
+		8A30289E1A7CEEB300BF59D3 /* FacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A30289D1A7CEEB300BF59D3 /* FacebookViewController.m */; };
 		8A372FB218138AFF0004F854 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A372FB118138AFF0004F854 /* Foundation.framework */; };
 		8A372FB418138AFF0004F854 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A372FB318138AFF0004F854 /* CoreGraphics.framework */; };
 		8A372FB618138AFF0004F854 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A372FB518138AFF0004F854 /* UIKit.framework */; };
@@ -14,7 +20,6 @@
 		8A372FBE18138AFF0004F854 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FBD18138AFF0004F854 /* main.m */; };
 		8A372FC218138AFF0004F854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FC118138AFF0004F854 /* AppDelegate.m */; };
 		8A372FC518138AFF0004F854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A372FC318138AFF0004F854 /* Main.storyboard */; };
-		8A372FC818138AFF0004F854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A372FC718138AFF0004F854 /* ViewController.m */; };
 		8A372FCA18138AFF0004F854 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A372FC918138AFF0004F854 /* Images.xcassets */; };
 		8A372FD118138AFF0004F854 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A372FD018138AFF0004F854 /* XCTest.framework */; };
 		8A372FD218138AFF0004F854 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A372FB118138AFF0004F854 /* Foundation.framework */; };
@@ -44,6 +49,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A3028841A7CDDA200BF59D3 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		8A3028851A7CDDA200BF59D3 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		8A3028901A7CE29E00BF59D3 /* TTMAccountStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAccountStoreManager.h; sourceTree = "<group>"; };
+		8A3028911A7CE29E00BF59D3 /* TTMAccountStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAccountStoreManager.m; sourceTree = "<group>"; };
+		8A3028941A7CEB5900BF59D3 /* TTMCommonButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMCommonButton.h; sourceTree = "<group>"; };
+		8A3028951A7CEB5900BF59D3 /* TTMCommonButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMCommonButton.m; sourceTree = "<group>"; };
+		8A3028971A7CEC0800BF59D3 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		8A3028991A7CEEA300BF59D3 /* TwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterViewController.h; sourceTree = "<group>"; };
+		8A30289A1A7CEEA300BF59D3 /* TwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterViewController.m; sourceTree = "<group>"; };
+		8A30289C1A7CEEB300BF59D3 /* FacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookViewController.h; sourceTree = "<group>"; };
+		8A30289D1A7CEEB300BF59D3 /* FacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookViewController.m; sourceTree = "<group>"; };
 		8A372FAE18138AFF0004F854 /* SocialAPIHelpersDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialAPIHelpersDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A372FB118138AFF0004F854 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8A372FB318138AFF0004F854 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,8 +71,6 @@
 		8A372FC018138AFF0004F854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8A372FC118138AFF0004F854 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8A372FC418138AFF0004F854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8A372FC618138AFF0004F854 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8A372FC718138AFF0004F854 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8A372FC918138AFF0004F854 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8A372FCF18138AFF0004F854 /* SocialAPIHelpersDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialAPIHelpersDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A372FD018138AFF0004F854 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -110,12 +124,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A3028931A7CEB5900BF59D3 /* TTM */ = {
+			isa = PBXGroup;
+			children = (
+				8A3028941A7CEB5900BF59D3 /* TTMCommonButton.h */,
+				8A3028951A7CEB5900BF59D3 /* TTMCommonButton.m */,
+			);
+			path = TTM;
+			sourceTree = "<group>";
+		};
 		8A372FA518138AFF0004F854 = {
 			isa = PBXGroup;
 			children = (
-				8A372FF31813A5850004F854 /* Vendor */,
 				8A372FE618138B2D0004F854 /* SocialAPIHelpers */,
 				8A372FB718138AFF0004F854 /* SocialAPIHelpersDemo */,
+				8A372FF31813A5850004F854 /* Vendor */,
+				8A372FB818138AFF0004F854 /* Supporting Files */,
 				8A372FD618138AFF0004F854 /* SocialAPIHelpersDemoTests */,
 				8A372FB018138AFF0004F854 /* Frameworks */,
 				8A372FAF18138AFF0004F854 /* Products */,
@@ -145,13 +169,17 @@
 		8A372FB718138AFF0004F854 /* SocialAPIHelpersDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8A372FC918138AFF0004F854 /* Images.xcassets */,
+				8A3028971A7CEC0800BF59D3 /* Launch Screen.xib */,
+				8A372FC318138AFF0004F854 /* Main.storyboard */,
 				8A372FC018138AFF0004F854 /* AppDelegate.h */,
 				8A372FC118138AFF0004F854 /* AppDelegate.m */,
-				8A372FC318138AFF0004F854 /* Main.storyboard */,
-				8A372FC618138AFF0004F854 /* ViewController.h */,
-				8A372FC718138AFF0004F854 /* ViewController.m */,
-				8A372FC918138AFF0004F854 /* Images.xcassets */,
-				8A372FB818138AFF0004F854 /* Supporting Files */,
+				8A3028841A7CDDA200BF59D3 /* RootViewController.h */,
+				8A3028851A7CDDA200BF59D3 /* RootViewController.m */,
+				8A3028991A7CEEA300BF59D3 /* TwitterViewController.h */,
+				8A30289A1A7CEEA300BF59D3 /* TwitterViewController.m */,
+				8A30289C1A7CEEB300BF59D3 /* FacebookViewController.h */,
+				8A30289D1A7CEEB300BF59D3 /* FacebookViewController.m */,
 			);
 			path = SocialAPIHelpersDemo;
 			sourceTree = "<group>";
@@ -165,6 +193,7 @@
 				8A372FBF18138AFF0004F854 /* SocialAPIHelpersDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = SocialAPIHelpersDemo;
 			sourceTree = "<group>";
 		};
 		8A372FD618138AFF0004F854 /* SocialAPIHelpersDemoTests */ = {
@@ -189,6 +218,10 @@
 			isa = PBXGroup;
 			children = (
 				8AACABD4188F6825002B0336 /* SocialAPIHelpers.h */,
+				8A3028901A7CE29E00BF59D3 /* TTMAccountStoreManager.h */,
+				8A3028911A7CE29E00BF59D3 /* TTMAccountStoreManager.m */,
+				8A372FED18138B7D0004F854 /* TTMAccountHelper.h */,
+				8A372FEE18138B7D0004F854 /* TTMAccountHelper.m */,
 				8A372FE718138B2D0004F854 /* TTMFacebookAPIHelper.h */,
 				8A372FE818138B2D0004F854 /* TTMFacebookAPIHelper.m */,
 				8A372FE918138B2D0004F854 /* TTMTwitterAPIHelper.h */,
@@ -197,8 +230,6 @@
 				8A516CFF1A7269C80032085A /* TTMFacebookProfile.m */,
 				8AACABD2188F6825002B0336 /* NSString+URL.h */,
 				8AACABD3188F6825002B0336 /* NSString+URL.m */,
-				8A372FED18138B7D0004F854 /* TTMAccountHelper.h */,
-				8A372FEE18138B7D0004F854 /* TTMAccountHelper.m */,
 				8A372FF01813A4DD0004F854 /* TTMSocialHelper.h */,
 				8A372FF11813A4DD0004F854 /* TTMSocialHelper.m */,
 				8A516CEC1A7259830032085A /* SLRequest+TTMExtensions.h */,
@@ -211,6 +242,7 @@
 		8A372FF31813A5850004F854 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8A3028931A7CEB5900BF59D3 /* TTM */,
 				8A516CEF1A725D3A0032085A /* SVProgressHUD */,
 			);
 			path = Vendor;
@@ -309,6 +341,7 @@
 				8A372FBC18138AFF0004F854 /* InfoPlist.strings in Resources */,
 				8A372FC518138AFF0004F854 /* Main.storyboard in Resources */,
 				8A516CF71A725D3A0032085A /* SVProgressHUD.bundle in Resources */,
+				8A3028981A7CEC0800BF59D3 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,15 +361,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A372FF21813A4DD0004F854 /* TTMSocialHelper.m in Sources */,
-				8A372FC818138AFF0004F854 /* ViewController.m in Sources */,
 				8A372FEF18138B7D0004F854 /* TTMAccountHelper.m in Sources */,
 				8A372FC218138AFF0004F854 /* AppDelegate.m in Sources */,
+				8A30289E1A7CEEB300BF59D3 /* FacebookViewController.m in Sources */,
+				8A30289B1A7CEEA300BF59D3 /* TwitterViewController.m in Sources */,
 				8A372FEC18138B2D0004F854 /* TTMTwitterAPIHelper.m in Sources */,
+				8A3028961A7CEB5900BF59D3 /* TTMCommonButton.m in Sources */,
 				8A516CF61A725D3A0032085A /* SVIndefiniteAnimatedView.m in Sources */,
 				8A372FEB18138B2D0004F854 /* TTMFacebookAPIHelper.m in Sources */,
 				8AACABD5188F6825002B0336 /* NSString+URL.m in Sources */,
 				8A516CEE1A7259830032085A /* SLRequest+TTMExtensions.m in Sources */,
 				8A516CF81A725D3A0032085A /* SVProgressHUD.m in Sources */,
+				8A3028861A7CDDA200BF59D3 /* RootViewController.m in Sources */,
+				8A3028921A7CE29E00BF59D3 /* TTMAccountStoreManager.m in Sources */,
 				8A372FBE18138AFF0004F854 /* main.m in Sources */,
 				8A516D001A7269C80032085A /* TTMFacebookProfile.m in Sources */,
 			);

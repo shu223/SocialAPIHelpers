@@ -10,6 +10,13 @@
 #import <Accounts/Accounts.h>
 
 
+typedef enum {
+    TTMAccountErrorUnknown = 0,
+    TTMAccountErrorNotGranted,
+    TTMAccountErrorNoAccounts,
+} TTMAccountError;
+
+
 #define kFBPermissionKeyEmail           @"email"
 #define kFBPermissionKeyXMPPLogin       @"xmpp_login"
 #define kFBPermissionKeyBasicInfo       @"basic_info"
@@ -21,18 +28,15 @@
 
 + (void)requestAccessToAccountsWithType:(NSString *)typeIdentifier
                                 options:(NSDictionary *)options
-                                  store:(ACAccountStore *)store
                                 handler:(void (^)(NSError *error))handler;
 
-+ (void)requestAccessToTwitterAccountsWithStore:(ACAccountStore *)store
-                                        handler:(void (^)(NSError *error))handler;
++ (void)requestAccessToTwitterAccountsWithHandler:(void (^)(NSError *error))handler;
 
-+ (ACAccount *)facebookAccountWithAccountStore:(ACAccountStore *)store;
-+ (NSArray *)twitterAccountsWithAccountStore:(ACAccountStore *)store;
++ (ACAccount *)facebookAccount;
++ (NSArray *)twitterAccounts;
 
-+ (void)showAccountSelectWithStore:(ACAccountStore *)store
-                          delegate:(id<UIActionSheetDelegate>)delegate
-                            inView:(UIView *)view;
++ (void)showAccountSelectWithDelegate:(id<UIActionSheetDelegate>)delegate
+                               inView:(UIView *)view;
 
 
 #pragma mark - Methods to retrieve options

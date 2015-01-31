@@ -1,71 +1,224 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mhg-62-nHT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Root View Controller-->
+        <scene sceneID="gnE-8D-ryY">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="Mhg-62-nHT" customClass="RootViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fjV-Dk-8HV"/>
-                        <viewControllerLayoutGuide type="bottom" id="y0V-Cl-lsg"/>
+                        <viewControllerLayoutGuide type="top" id="IUs-Tj-jqK"/>
+                        <viewControllerLayoutGuide type="bottom" id="IDJ-qr-G98"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="cDO-50-na6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkO-Wr-46M">
-                                <rect key="frame" x="50" y="141" width="220" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get User Information">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaH-sI-Nob" customClass="TTMCommonButton">
+                                <rect key="frame" x="40" y="224" width="240" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Ms2-HG-m3w"/>
+                                    <constraint firstAttribute="height" constant="44" id="heg-uy-n7j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="TWITTER">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="retrieveUserInformation" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rRk-4x-ynk"/>
+                                    <action selector="twitterBtnTapped:" destination="Mhg-62-nHT" eventType="touchUpInside" id="n26-yu-K7v"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8e-Nx-4yD">
-                                <rect key="frame" x="50" y="193" width="220" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get Home Timeline">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVa-If-OIL" customClass="TTMCommonButton">
+                                <rect key="frame" x="40" y="300" width="240" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Phu-3b-oTI"/>
+                                    <constraint firstAttribute="width" constant="240" id="rDq-XL-CdL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="FACEBOOK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="readHomeTimeline" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d9V-gC-ZHA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzr-uk-9bR">
-                                <rect key="frame" x="50" y="245" width="220" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get User Timeline">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="readUserTimeline" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zSy-wg-ybQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODB-zY-xTu">
-                                <rect key="frame" x="50" y="350" width="220" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="News Feed">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="readNewsFeed" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hEO-6x-OYH"/>
+                                    <action selector="facebookBtnTapped:" destination="Mhg-62-nHT" eventType="touchUpInside" id="qpp-Jh-yKY"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="xaH-sI-Nob" secondAttribute="centerX" id="LM3-Dt-qYF"/>
+                            <constraint firstAttribute="centerY" secondItem="xaH-sI-Nob" secondAttribute="centerY" constant="38" id="Pes-uR-oly"/>
+                            <constraint firstItem="MVa-If-OIL" firstAttribute="top" secondItem="xaH-sI-Nob" secondAttribute="bottom" constant="32" id="dvE-gJ-9QN"/>
+                            <constraint firstAttribute="centerX" secondItem="MVa-If-OIL" secondAttribute="centerX" id="n2x-FL-mkO"/>
+                        </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <segue destination="Ufg-n3-Vz8" kind="modal" identifier="ShowTwitter" id="NBY-9p-dAU"/>
+                        <segue destination="eqM-5a-9bF" kind="modal" identifier="ShowFacebook" id="1u5-dX-oYo"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w6G-xM-90G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-204" y="-227"/>
+        </scene>
+        <!--Twitter View Controller-->
+        <scene sceneID="b2A-KW-EuX">
+            <objects>
+                <viewController id="Ufg-n3-Vz8" customClass="TwitterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2O2-YF-fkU"/>
+                        <viewControllerLayoutGuide type="bottom" id="mre-Gq-C3f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Iu-gU-12m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6v-gx-m8u">
+                                <rect key="frame" x="16" y="36" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="jIF-Sy-Yle"/>
+                                    <constraint firstAttribute="width" constant="44" id="mM2-7O-7eo"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ico_close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeBtnTapped:" destination="Ufg-n3-Vz8" eventType="touchUpInside" id="PBt-EL-te2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlV-tU-Agk" customClass="TTMCommonButton">
+                                <rect key="frame" x="40" y="186" width="240" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="K2x-jC-3j6"/>
+                                    <constraint firstAttribute="width" constant="240" id="OFP-SL-O5j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="USER INFORMATION">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="retrieveUserInformation" destination="Ufg-n3-Vz8" eventType="touchUpInside" id="6di-fC-o3s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9j6-fO-CZg" customClass="TTMCommonButton">
+                                <rect key="frame" x="40" y="338" width="240" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="I5A-V2-XjH"/>
+                                    <constraint firstAttribute="width" constant="240" id="Ip3-EL-gaz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="USER TIMELINE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="readUserTimeline" destination="Ufg-n3-Vz8" eventType="touchUpInside" id="Pu9-hA-kWf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8S-PZ-Tec" customClass="TTMCommonButton">
+                                <rect key="frame" x="40" y="262" width="240" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HFg-xt-Bdu"/>
+                                    <constraint firstAttribute="width" constant="240" id="auA-S5-YV3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="HOME TIMELINE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="readHomeTimeline" destination="Ufg-n3-Vz8" eventType="touchUpInside" id="rzu-JC-OpO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="9j6-fO-CZg" secondAttribute="centerX" id="FzR-eH-Jce"/>
+                            <constraint firstItem="P6v-gx-m8u" firstAttribute="top" secondItem="1Iu-gU-12m" secondAttribute="top" constant="36" id="MUs-6Q-Kzy"/>
+                            <constraint firstItem="9j6-fO-CZg" firstAttribute="top" secondItem="e8S-PZ-Tec" secondAttribute="bottom" constant="32" id="Oqp-R7-ppY"/>
+                            <constraint firstAttribute="centerX" secondItem="e8S-PZ-Tec" secondAttribute="centerX" id="VD8-Jq-6wb"/>
+                            <constraint firstItem="P6v-gx-m8u" firstAttribute="leading" secondItem="1Iu-gU-12m" secondAttribute="leading" constant="16" id="YME-DT-Nx5"/>
+                            <constraint firstItem="e8S-PZ-Tec" firstAttribute="top" secondItem="WlV-tU-Agk" secondAttribute="bottom" constant="32" id="i7G-Q8-cDr"/>
+                            <constraint firstAttribute="centerX" secondItem="WlV-tU-Agk" secondAttribute="centerX" id="jIU-yh-IQm"/>
+                            <constraint firstAttribute="centerY" secondItem="e8S-PZ-Tec" secondAttribute="centerY" id="zZs-ZW-b9k"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WSg-V7-rp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="362" y="-227"/>
+        </scene>
+        <!--Facebook View Controller-->
+        <scene sceneID="HzH-Wt-mBk">
+            <objects>
+                <viewController id="eqM-5a-9bF" customClass="FacebookViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ahg-aA-KSy"/>
+                        <viewControllerLayoutGuide type="bottom" id="rlv-3h-af4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="goK-G9-GCJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAC-Ue-70R">
+                                <rect key="frame" x="16" y="36" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2bb-cl-ldj"/>
+                                    <constraint firstAttribute="width" constant="44" id="STt-m4-k86"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ico_close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeBtnTapped:" destination="eqM-5a-9bF" eventType="touchUpInside" id="zvJ-KI-tAA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYD-U0-35W" customClass="TTMCommonButton">
+                                <rect key="frame" x="40" y="262" width="240" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="EeF-AF-fY9"/>
+                                    <constraint firstAttribute="height" constant="44" id="Gk7-zP-dQZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="NEWS FEED">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="readNewsFeed" destination="eqM-5a-9bF" eventType="touchUpInside" id="5kw-D4-Ekw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="zYD-U0-35W" secondAttribute="centerX" id="4Kw-bW-P3u"/>
+                            <constraint firstItem="EAC-Ue-70R" firstAttribute="leading" secondItem="goK-G9-GCJ" secondAttribute="leading" constant="16" id="EDS-hw-x1V"/>
+                            <constraint firstItem="EAC-Ue-70R" firstAttribute="top" secondItem="goK-G9-GCJ" secondAttribute="top" constant="36" id="Eh7-CD-C1S"/>
+                            <constraint firstAttribute="centerY" secondItem="zYD-U0-35W" secondAttribute="centerY" id="qlt-1b-Q7N"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKx-MS-FZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="362" y="489"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ico_close" width="14" height="14"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
