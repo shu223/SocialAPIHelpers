@@ -10,10 +10,13 @@
 #import <Accounts/Accounts.h>
 
 
+extern NSString * const TTMAccountErrorDomain;
+
 typedef enum {
     TTMAccountErrorUnknown = 0,
     TTMAccountErrorNotGranted,
     TTMAccountErrorNoAccounts,
+    TTMAccountErrorCredentialNotRenewed
 } TTMAccountError;
 
 
@@ -37,6 +40,8 @@ typedef enum {
 
 + (void)showAccountSelectWithDelegate:(id<UIActionSheetDelegate>)delegate
                                inView:(UIView *)view;
+
++ (void)renewCredentialsForFacebookAccountWithCompletion:(void (^)(NSError *error))completion;
 
 
 #pragma mark - Methods to retrieve options

@@ -8,10 +8,22 @@
 
 #import "TTMAccountHelper.h"
 @import Social;
+@import Accounts;
 #import "TTMAccountStoreManager.h"
 
 
+NSString * const TTMAccountErrorDomain = @"com.shu223.SocialAPIHelpers.TTMAccountHelper";
+
+
 @implementation TTMAccountHelper
+
++ (NSError *)errorWithCode:(TTMAccountError)code message:(NSString *)message {
+    
+    NSError *err = [NSError errorWithDomain:TTMAccountErrorDomain
+                                       code:code
+                                   userInfo:@{NSLocalizedDescriptionKey: message}];
+    return err;
+}
 
 + (void)requestAccessToAccountsWithType:(NSString *)typeIdentifier
                                 options:(NSDictionary *)options
@@ -41,7 +53,7 @@
              // granted!
              else {
 
-                 ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+                 ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:typeIdentifier];
                  NSArray *accounts = [store accountsWithAccountType:accountType];
 
                  if ([accounts count] == 0) {
@@ -58,7 +70,6 @@
                          anAccount.accountType = accountType;
                      }
                  }
-                 
              }
              
              dispatch_async(dispatch_get_main_queue(), ^{
@@ -113,6 +124,59 @@
     }
     
     [actionSheet showInView:view];
+}
+
++ (void)renewCredentialsForFacebookAccountWithCompletion:(void (^)(NSError *error))completion
+{
+    ACAccountStore *store = [[TTMAccountStoreManager sharedManager] store];
+
+    [store renewCredentialsForAccount:[self facebookAccount]
+                           completion:
+     ^(ACAccountCredentialRenewResult renewResult, NSError *error) {
+         
+         if (error) {
+
+             completion(error);
+         }
+         else {
+             
+             switch (renewResult) {
+                     
+                 case ACAccountCredentialRenewResultRenewed:
+                 {
+                     NSLog(@"ACAccountCredentialRenewResultRenewed");
+                     completion(nil);
+                     
+                     break;
+                 }
+                 case ACAccountCredentialRenewResultRejected:
+                 {
+                     NSLog(@"ACAccountCredentialRenewResultRejected");
+                     NSError *err = [self errorWithCode:TTMAccountErrorCredentialNotRenewed
+                                                message:@"Failed to renew credentials: ACAccountCredentialRenewResultRejected"];
+                     completion(err);
+                     
+                     break;
+                 }
+                 case ACAccountCredentialRenewResultFailed:
+                 {
+                     NSLog(@"ACAccountCredentialRenewResultFailed");
+                     NSError *err = [self errorWithCode:TTMAccountErrorCredentialNotRenewed
+                                                message:@"Failed to renew credentials: ACAccountCredentialRenewResultFailed"];
+                     completion(err);
+                     
+                     break;
+                 }
+                 default:
+                 {
+                     NSError *err = [self errorWithCode:TTMAccountErrorCredentialNotRenewed
+                                                message:@"Failed to renew credentials: Other"];
+                     completion(err);
+                     break;
+                 }
+             }
+         }
+     }];
 }
 
 

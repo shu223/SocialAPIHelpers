@@ -7,6 +7,11 @@
 //
 
 #import "TTMSocialHelper.h"
+#import "TTMAccountHelper.h"
+
+
+NSString * const TTMSocialErrorDomain = @"com.shu223.SocialAPIHelpers.TTMSocialHelper";
+
 
 @implementation TTMSocialHelper
 
@@ -42,11 +47,36 @@
             
             NSDictionary *errorDic = jsonData[@"error"];
             
-            NSError *err = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
-                                               code:[errorDic[@"code"] intValue]
-                                           userInfo:@{NSLocalizedDescriptionKey: errorDic[@"message"]}];
+            NSUInteger errorCode = [errorDic[@"code"] intValue];
             
-            handler(nil, err);
+
+            // Need to renew credentials
+            if (errorCode == 2500 || errorCode == 190) {
+                
+                [TTMAccountHelper renewCredentialsForFacebookAccountWithCompletion:^(NSError *error) {
+
+                    NSError *err;
+                    
+                    // Failed to renew credentials
+                    if (error) {
+                        err = error;
+                    }
+                    // Credential renewed
+                    else {
+                        err = [NSError errorWithDomain:TTMSocialErrorDomain
+                                                  code:TTMSocialErrorCredentialRenewed
+                                              userInfo:@{NSLocalizedDescriptionKey: @"ACAccountCredentialRenewResultRenewed"}];
+                    }
+                    handler(nil, err);
+                }];
+            }
+            // other errors
+            else {
+                NSError *err = [NSError errorWithDomain:TTMSocialErrorDomain
+                                          code:errorCode
+                                      userInfo:@{NSLocalizedDescriptionKey: errorDic[@"message"]}];
+                handler(nil, err);
+            }
             
             return;
         }

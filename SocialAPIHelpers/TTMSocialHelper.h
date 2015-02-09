@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+
+extern NSString * const TTMSocialErrorDomain;
+
+
+typedef enum {
+    TTMSocialErrorUnknown = 0,
+    TTMSocialErrorCredentialRenewed,
+} TTMSocialError;
+
+
 @interface TTMSocialHelper : NSObject
 
 + (void)parseSLRequestResponseData:(NSData *)responseData
