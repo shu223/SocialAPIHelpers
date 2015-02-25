@@ -36,7 +36,7 @@
 }
 
 + (void)userProfileForAccount:(ACAccount *)account
-                      handler:(void (^)(TTMFacebookProfile *result, NSError *error))handler
+                      handler:(void (^)(TTMFacebookProfile *profile, NSDictionary *result, NSError *error))handler
 {
     // https://developers.facebook.com/docs/reference/api/using-pictures/
     NSString *urlStr = [NSString stringWithFormat:@"%@/me", kBaseURL];
@@ -52,12 +52,12 @@
     [request performAsyncRequestWithHandler:^(id result, NSError *error) {
         
         if (error) {
-            handler(nil, error);
+            handler(nil, nil, error);
             return;
         }
         
         TTMFacebookProfile *profile = [[TTMFacebookProfile alloc] initWithDictionray:result];
-        handler(profile, nil);
+        handler(profile, result, nil);
     }];
 }
 

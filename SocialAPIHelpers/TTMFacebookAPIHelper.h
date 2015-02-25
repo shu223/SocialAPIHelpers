@@ -18,7 +18,7 @@
                requestAccount:(ACAccount *)requestAccount
                       handler:(TTMRequestHandler)handler;
 + (void)userProfileForAccount:(ACAccount *)account
-                      handler:(void (^)(TTMFacebookProfile *result, NSError *error))handler;
+                      handler:(void (^)(TTMFacebookProfile *profile, NSDictionary *result, NSError *error))handler;
 
 // The user's friends.
 + (void)friendsForAccount:(ACAccount *)account
