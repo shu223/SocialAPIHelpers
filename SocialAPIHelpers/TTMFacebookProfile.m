@@ -58,4 +58,27 @@
     return self;
 }
 
+- (NSURL *)urlForProfilePictureWithType:(TTMFacebookProfilePictureType)type {
+
+    NSString *typeStr;
+    switch (type) {
+        case 0:
+        default:
+            typeStr = @"square";
+            break;
+        case 1:
+            typeStr = @"small";
+            break;
+        case 2:
+            typeStr = @"normal";
+            break;
+        case 3:
+            typeStr = @"large";
+            break;
+    }
+    NSString *urlStr = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=%@",
+                        self.identifier, typeStr];
+    return [NSURL URLWithString:urlStr];
+}
+
 @end

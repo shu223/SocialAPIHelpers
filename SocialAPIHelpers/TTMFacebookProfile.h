@@ -9,11 +9,18 @@
 #import <Foundation/Foundation.h>
 
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, TTMFacebookProfileGenderType) {
     TTMFacebookProfileGenderTypeUnknown = 0,
     TTMFacebookProfileGenderTypeMale,
     TTMFacebookProfileGenderTypeFemale,
-} TTMFacebookProfileGenderType;
+};
+
+typedef NS_ENUM(NSUInteger, TTMFacebookProfilePictureType) {
+    TTMFacebookProfilePictureTypeSquare = 0,
+    TTMFacebookProfilePictureTypeSmall,
+    TTMFacebookProfilePictureTypeNormal,
+    TTMFacebookProfilePictureTypeLarge,
+};
 
 
 @interface TTMFacebookProfile : NSObject
@@ -31,5 +38,7 @@ typedef enum {
 @property (nonatomic, readonly) NSString *locationName;
 
 - (id)initWithDictionray:(NSDictionary *)profileDic;
+
+- (NSURL *)urlForProfilePictureWithType:(TTMFacebookProfilePictureType)type;
 
 @end
