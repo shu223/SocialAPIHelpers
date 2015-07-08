@@ -118,3 +118,16 @@ if ([accounts count] >= 2) {
      NSLog(@"result:%@, error:%@", result, error);
  }];
 ```
+
+###Friends
+
+```
+[TTMFacebookAPIHelper friendsForAccount:account
+                                handler:
+ ^(NSArray *friends, NSDictionary *result, NSError *error) {
+
+     NSLog(@"friends:%@, result:%@", friends, result);
+ }];
+```
+
+One of returning value `frineds` is an array of "[TTMFacebookProfile](https://github.com/shu223/SocialAPIHelpers/blob/master/SocialAPIHelpers/TTMFacebookProfile.h)" objects.

@@ -75,4 +75,26 @@
      }];
 }
 
+- (IBAction)getFriends {
+    
+    [SVProgressHUD showWithStatus:@"Loading..."
+                         maskType:SVProgressHUDMaskTypeGradient];
+    
+    ACAccount *account = [TTMAccountHelper facebookAccount];
+    
+    [TTMFacebookAPIHelper friendsForAccount:account
+                                    handler:
+     ^(NSArray *friends, NSDictionary *result, NSError *error) {
+
+         [SVProgressHUD dismiss];
+
+         if (error) {
+             NSLog(@"error:%@", error);
+             return;
+         }
+         
+         NSLog(@"friends:%@, result:%@", friends, result);
+     }];
+}
+
 @end

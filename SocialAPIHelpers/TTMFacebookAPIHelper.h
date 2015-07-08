@@ -22,7 +22,7 @@
 
 // The user's friends.
 + (void)friendsForAccount:(ACAccount *)account
-                  handler:(TTMRequestHandler)handler;
+                  handler:(void (^)(NSArray *friends, NSDictionary *result, NSError *error))handler;
 
 // Profile Picture
 + (NSString *)profilePictureURLForUserId:(NSString *)userId;

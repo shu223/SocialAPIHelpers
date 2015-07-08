@@ -63,7 +63,7 @@
 
 // The user's friends.
 + (void)friendsForAccount:(ACAccount *)account
-                  handler:(TTMRequestHandler)handler
+                  handler:(void (^)(NSArray *friends, NSDictionary *result, NSError *error))handler
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/me/friends", kBaseURL];
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -75,7 +75,25 @@
 
     request.account = account;
     
-    [request performAsyncRequestWithHandler:handler];
+    [request performAsyncRequestWithHandler:^(id result, NSError *error) {
+        
+        if (error) {
+            handler(nil, nil, error);
+            return;
+        }
+        
+        NSArray *friendDics = result[@"data"];
+        NSMutableArray *arr = @[].mutableCopy;
+        for (NSDictionary *aDic in friendDics) {
+            
+            TTMFacebookProfile *aProfile = [[TTMFacebookProfile alloc] initWithDictionray:aDic];
+            if (aProfile) {
+                [arr addObject:aProfile];
+            }
+        }
+        
+        handler(arr, result, error);
+    }];
 }
 
 
