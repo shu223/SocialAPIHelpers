@@ -54,12 +54,12 @@
              return;
          }
          
-         NSArray *feeds = result[@"data"];
+         NSArray<NSDictionary *> *feeds = result[@"data"];
          
          for (NSDictionary *aFeed in feeds) {
              
              NSDictionary *fromDic = aFeed[@"from"];
-             NSArray *likes = aFeed[@"likes"][@"data"];
+             NSArray<NSDictionary *> *likes = aFeed[@"likes"][@"data"];
              
              NSLog(@"from:%@, message:%@, likes:%lu",
                    fromDic[@"name"],
@@ -84,7 +84,7 @@
     
     [TTMFacebookAPIHelper friendsForAccount:account
                                     handler:
-     ^(NSArray *friends, NSDictionary *result, NSError *error) {
+     ^(NSArray<TTMFacebookProfile *> *friends, NSDictionary *result, NSError *error) {
 
          [SVProgressHUD dismiss];
 

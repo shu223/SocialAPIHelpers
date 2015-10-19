@@ -36,7 +36,7 @@ typedef enum {
 + (void)requestAccessToTwitterAccountsWithHandler:(void (^)(NSError *error))handler;
 
 + (ACAccount *)facebookAccount;
-+ (NSArray *)twitterAccounts;
++ (NSArray<ACAccount *> *)twitterAccounts;
 
 + (void)showAccountSelectWithDelegate:(id<UIActionSheetDelegate>)delegate
                                inView:(UIView *)view;

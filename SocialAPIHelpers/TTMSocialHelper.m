@@ -91,7 +91,7 @@ NSString * const TTMSocialErrorDomain = @"com.shu223.SocialAPIHelpers.TTMSocialH
              }
              );
              */
-            NSArray *errors = jsonData[@"errors"];
+            NSArray<NSDictionary *> *errors = jsonData[@"errors"];
             NSLog(@"jsonData[@\"errors\"]:%@", errors);
             
             if ([errors count]) {

@@ -85,7 +85,7 @@
          
          [SVProgressHUD dismiss];
          
-         NSArray *accounts = [TTMAccountHelper twitterAccounts];
+         NSArray<ACAccount *> *accounts = [TTMAccountHelper twitterAccounts];
          
          if ([accounts count] >= 2) {
              
@@ -106,7 +106,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
     
-    NSArray *accounts = [TTMAccountHelper twitterAccounts];
+    NSArray<ACAccount *> *accounts = [TTMAccountHelper twitterAccounts];
     self.selectedAccount = [accounts objectAtIndex:buttonIndex];
 
     [self performSegueWithIdentifier:@"ShowTwitter" sender:self];

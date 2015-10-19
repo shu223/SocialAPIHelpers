@@ -220,7 +220,7 @@
 #pragma mark - GET users/lookup
 
 // https://dev.twitter.com/docs/api/1.1/get/users/lookup
-+ (void)userInformationsForIDs:(NSArray *)ids
++ (void)userInformationsForIDs:(NSArray<NSString *> *)ids
                 requestAccount:(ACAccount *)requestAccount
                        handler:(TTMRequestHandler)handler
 {

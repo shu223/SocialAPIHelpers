@@ -54,7 +54,7 @@ NSString * const TTMAccountErrorDomain = @"com.shu223.SocialAPIHelpers.TTMAccoun
              else {
 
                  ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:typeIdentifier];
-                 NSArray *accounts = [store accountsWithAccountType:accountType];
+                 NSArray<ACAccount *> *accounts = [store accountsWithAccountType:accountType];
 
                  if ([accounts count] == 0) {
                      
@@ -96,7 +96,7 @@ NSString * const TTMAccountErrorDomain = @"com.shu223.SocialAPIHelpers.TTMAccoun
     return [[store accountsWithAccountType:accountType] lastObject];
 }
 
-+ (NSArray *)twitterAccounts {
++ (NSArray<ACAccount *> *)twitterAccounts {
     
     ACAccountStore *store = [[TTMAccountStoreManager sharedManager] store];
 
@@ -116,7 +116,7 @@ NSString * const TTMAccountErrorDomain = @"com.shu223.SocialAPIHelpers.TTMAccoun
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];
     
-    NSArray *accounts = [TTMAccountHelper twitterAccounts];
+    NSArray<ACAccount *> *accounts = [TTMAccountHelper twitterAccounts];
     
     for (ACAccount *anAccount in accounts) {
         

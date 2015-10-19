@@ -22,7 +22,7 @@
 
 // The user's friends.
 + (void)friendsForAccount:(ACAccount *)account
-                  handler:(void (^)(NSArray *friends, NSDictionary *result, NSError *error))handler;
+                  handler:(void (^)(NSArray<TTMFacebookProfile *> *friends, NSDictionary *result, NSError *error))handler;
 
 // Profile Picture
 + (NSString *)profilePictureURLForUserId:(NSString *)userId;
@@ -67,6 +67,6 @@
 
 // Other
 + (NSDate *)dateOfPost:(NSDictionary *)post;
-+ (NSArray *)sortedPostsWithLikes:(NSArray *)posts;
++ (NSArray<NSDictionary *> *)sortedPostsWithLikes:(NSArray<NSDictionary *> *)posts;
 
 @end

@@ -63,7 +63,7 @@
 
 // The user's friends.
 + (void)friendsForAccount:(ACAccount *)account
-                  handler:(void (^)(NSArray *friends, NSDictionary *result, NSError *error))handler
+                  handler:(void (^)(NSArray<TTMFacebookProfile *> *friends, NSDictionary *result, NSError *error))handler
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/me/friends", kBaseURL];
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -82,8 +82,8 @@
             return;
         }
         
-        NSArray *friendDics = result[@"data"];
-        NSMutableArray *arr = @[].mutableCopy;
+        NSArray<NSDictionary *> *friendDics = result[@"data"];
+        NSMutableArray<TTMFacebookProfile *> *arr = @[].mutableCopy;
         for (NSDictionary *aDic in friendDics) {
             
             TTMFacebookProfile *aProfile = [[TTMFacebookProfile alloc] initWithDictionray:aDic];
@@ -299,19 +299,19 @@
     return date;
 }
 
-+ (NSArray *)sortedPostsWithLikes:(NSArray *)posts {
++ (NSArray<NSDictionary *> *)sortedPostsWithLikes:(NSArray<NSDictionary *> *)posts {
     
-    NSMutableArray *sorted = @[].mutableCopy;
+    NSMutableArray<NSDictionary *> *sorted = @[].mutableCopy;
     
     for (NSDictionary *aPost in posts) {
 
-        NSArray *likes = aPost[@"likes"][@"data"];
+        NSArray<NSDictionary *> *likes = aPost[@"likes"][@"data"];
 
         BOOL inserted = NO;
         for (int i=0; i<[sorted count]; i++) {
             
             NSDictionary *aSortedPost = sorted[i];
-            NSArray *compareLikes = aSortedPost[@"likes"][@"data"];
+            NSArray<NSDictionary *> *compareLikes = aSortedPost[@"likes"][@"data"];
             if ([likes count] > [compareLikes count]) {
                 
                 [sorted insertObject:aPost atIndex:i];

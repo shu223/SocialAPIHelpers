@@ -305,7 +305,7 @@
 		8A372FA618138AFF0004F854 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Shuichi Tsutsumi";
 				TargetAttributes = {
 					8A372FCE18138AFF0004F854 = {
@@ -443,6 +443,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -503,6 +504,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialAPIHelpersDemo/SocialAPIHelpersDemo-Prefix.pch";
 				INFOPLIST_FILE = "SocialAPIHelpersDemo/SocialAPIHelpersDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shu223.socialdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -516,6 +518,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialAPIHelpersDemo/SocialAPIHelpersDemo-Prefix.pch";
 				INFOPLIST_FILE = "SocialAPIHelpersDemo/SocialAPIHelpersDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shu223.socialdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -537,6 +540,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "SocialAPIHelpersDemoTests/SocialAPIHelpersDemoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Shuichi-Tsutsumi.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -555,6 +559,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialAPIHelpersDemo/SocialAPIHelpersDemo-Prefix.pch";
 				INFOPLIST_FILE = "SocialAPIHelpersDemoTests/SocialAPIHelpersDemoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Shuichi-Tsutsumi.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
