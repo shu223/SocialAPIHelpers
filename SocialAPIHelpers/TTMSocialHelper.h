@@ -12,10 +12,10 @@
 extern NSString * const TTMSocialErrorDomain;
 
 
-typedef enum {
+typedef NS_ENUM(unsigned int, TTMSocialError) {
     TTMSocialErrorUnknown = 0,
     TTMSocialErrorCredentialRenewed,
-} TTMSocialError;
+};
 
 
 @interface TTMSocialHelper : NSObject

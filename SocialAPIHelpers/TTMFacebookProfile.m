@@ -26,7 +26,7 @@
 
 @implementation TTMFacebookProfile
 
-- (id)initWithDictionray:(NSDictionary *)profileDic {
+- (instancetype)initWithDictionray:(NSDictionary *)profileDic {
     self = [super init];
     if (self) {
         

@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, TTMFacebookProfilePictureType) {
 @property (nonatomic, readonly) NSString *locationId;
 @property (nonatomic, readonly) NSString *locationName;
 
-- (id)initWithDictionray:(NSDictionary *)profileDic;
+- (instancetype)initWithDictionray:(NSDictionary *)profileDic;
 
 - (NSURL *)urlForProfilePictureWithType:(TTMFacebookProfilePictureType)type;
 

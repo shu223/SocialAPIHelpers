@@ -19,7 +19,7 @@
         NSString *key = [elements[0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSString *val = [elements[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
-        [dict setObject:val forKey:key];
+        dict[key] = val;
     }
     return dict;
 }

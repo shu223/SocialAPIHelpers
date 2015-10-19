@@ -3,7 +3,7 @@
 //  SocialAPIHelpersDemo
 //
 //  Created by Shuichi Tsutsumi on 2015/01/31.
-//  Copyright (c) 2015年 Shuichi Tsutsumi. All rights reserved.
+//  Copyright (c) 2015 Shuichi Tsutsumi. All rights reserved.
 //
 
 #import "FacebookViewController.h"
@@ -64,7 +64,7 @@
              NSLog(@"from:%@, message:%@, likes:%lu",
                    fromDic[@"name"],
                    aFeed[@"message"],
-                   [likes count]);
+                   likes.count);
              NSLog(@"type:%@, title:%@, link:%@, picture:%@, description:%@\n\n",
                    aFeed[@"type"],
                    aFeed[@"name"],

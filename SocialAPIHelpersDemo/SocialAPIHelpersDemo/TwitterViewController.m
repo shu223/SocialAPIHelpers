@@ -3,7 +3,7 @@
 //  SocialAPIHelpersDemo
 //
 //  Created by Shuichi Tsutsumi on 2015/01/31.
-//  Copyright (c) 2015年 Shuichi Tsutsumi. All rights reserved.
+//  Copyright (c) 2015 Shuichi Tsutsumi. All rights reserved.
 //
 
 #import "TwitterViewController.h"

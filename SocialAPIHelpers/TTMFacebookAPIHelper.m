@@ -292,8 +292,8 @@
     NSString *dateStr = post[@"created_time"];
     
     NSDateFormatter *inputFormat = [[NSDateFormatter alloc] init];
-    [inputFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-    [inputFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+    inputFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    inputFormat.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZ";
     NSDate *date = [inputFormat dateFromString:dateStr];
     
     return date;
@@ -308,11 +308,11 @@
         NSArray<NSDictionary *> *likes = aPost[@"likes"][@"data"];
 
         BOOL inserted = NO;
-        for (int i=0; i<[sorted count]; i++) {
+        for (int i=0; i<sorted.count; i++) {
             
             NSDictionary *aSortedPost = sorted[i];
             NSArray<NSDictionary *> *compareLikes = aSortedPost[@"likes"][@"data"];
-            if ([likes count] > [compareLikes count]) {
+            if (likes.count > compareLikes.count) {
                 
                 [sorted insertObject:aPost atIndex:i];
                 

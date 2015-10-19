@@ -29,7 +29,7 @@ NSString * const TTMAccountErrorDomain = @"com.shu223.SocialAPIHelpers.TTMAccoun
                                 options:(NSDictionary *)options
                                 handler:(void (^)(NSError *error))handler
 {
-    ACAccountStore *store = [[TTMAccountStoreManager sharedManager] store];
+    ACAccountStore *store = [TTMAccountStoreManager sharedManager].store;
     ACAccountType *type = [store accountTypeWithAccountTypeIdentifier:typeIdentifier];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -56,7 +56,7 @@ NSString * const TTMAccountErrorDomain = @"com.shu223.SocialAPIHelpers.TTMAccoun
                  ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:typeIdentifier];
                  NSArray<ACAccount *> *accounts = [store accountsWithAccountType:accountType];
 
-                 if ([accounts count] == 0) {
+                 if (accounts.count == 0) {
                      
                      error = [NSError errorWithDomain:NSStringFromClass([self class])
                                                  code:TTMAccountErrorNoAccounts
@@ -89,16 +89,16 @@ NSString * const TTMAccountErrorDomain = @"com.shu223.SocialAPIHelpers.TTMAccoun
 
 + (ACAccount *)facebookAccount {
     
-    ACAccountStore *store = [[TTMAccountStoreManager sharedManager] store];
+    ACAccountStore *store = [TTMAccountStoreManager sharedManager].store;
 
     ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     
-    return [[store accountsWithAccountType:accountType] lastObject];
+    return [store accountsWithAccountType:accountType].lastObject;
 }
 
 + (NSArray<ACAccount *> *)twitterAccounts {
     
-    ACAccountStore *store = [[TTMAccountStoreManager sharedManager] store];
+    ACAccountStore *store = [TTMAccountStoreManager sharedManager].store;
 
     ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
@@ -128,7 +128,7 @@ NSString * const TTMAccountErrorDomain = @"com.shu223.SocialAPIHelpers.TTMAccoun
 
 + (void)renewCredentialsForFacebookAccountWithCompletion:(void (^)(NSError *error))completion
 {
-    ACAccountStore *store = [[TTMAccountStoreManager sharedManager] store];
+    ACAccountStore *store = [TTMAccountStoreManager sharedManager].store;
 
     [store renewCredentialsForAccount:[self facebookAccount]
                            completion:

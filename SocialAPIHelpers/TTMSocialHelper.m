@@ -94,11 +94,11 @@ NSString * const TTMSocialErrorDomain = @"com.shu223.SocialAPIHelpers.TTMSocialH
             NSArray<NSDictionary *> *errors = jsonData[@"errors"];
             NSLog(@"jsonData[@\"errors\"]:%@", errors);
             
-            if ([errors count]) {
+            if (errors.count) {
                 
                 // ひとつめのエラーだけ見る
-                NSDictionary *errorDic = [errors objectAtIndex:0];
-                NSError *err = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
+                NSDictionary *errorDic = errors[0];
+                NSError *err = [NSError errorWithDomain:[NSBundle mainBundle].bundleIdentifier
                                                    code:[errorDic[@"code"] intValue]
                                                userInfo:@{NSLocalizedDescriptionKey: errorDic[@"message"]}];
                 

@@ -233,7 +233,7 @@
         [idsStr appendFormat:@"%@,", anID];
     }
     if ([idsStr hasSuffix:@","]) {
-        [idsStr deleteCharactersInRange:NSMakeRange([idsStr length] - 1, 1)];
+        [idsStr deleteCharactersInRange:NSMakeRange(idsStr.length - 1, 1)];
     }
     
     NSURL *url = [NSURL URLWithPath:@"users/lookup.json"];
@@ -327,8 +327,8 @@
     NSString *dateStr = status[@"created_at"];
     
     NSDateFormatter *inputFormat = [[NSDateFormatter alloc] init];
-    [inputFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-    [inputFormat setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
+    inputFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    inputFormat.dateFormat = @"eee MMM dd HH:mm:ss ZZZZ yyyy";
     NSDate *date = [inputFormat dateFromString:dateStr];
     
     return date;

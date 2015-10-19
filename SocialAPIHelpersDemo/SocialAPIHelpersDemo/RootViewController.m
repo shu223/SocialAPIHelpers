@@ -3,7 +3,7 @@
 //  SocialAPIHelpersDemo
 //
 //  Created by Shuichi Tsutsumi on 2015/01/31.
-//  Copyright (c) 2015年 Shuichi Tsutsumi. All rights reserved.
+//  Copyright (c) 2015 Shuichi Tsutsumi. All rights reserved.
 //
 
 #import "RootViewController.h"
@@ -37,7 +37,7 @@
     
     if ([segue.destinationViewController isKindOfClass:[TwitterViewController class]]) {
     
-        [(TwitterViewController *)segue.destinationViewController setSelectedAccount:self.selectedAccount];
+        ((TwitterViewController *)segue.destinationViewController).selectedAccount = self.selectedAccount;
     }
 }
 
@@ -87,12 +87,12 @@
          
          NSArray<ACAccount *> *accounts = [TTMAccountHelper twitterAccounts];
          
-         if ([accounts count] >= 2) {
+         if (accounts.count >= 2) {
              
              [TTMAccountHelper showAccountSelectWithDelegate:self
                                                       inView:self.view];
          }
-         else if ([accounts count] == 1) {
+         else if (accounts.count == 1) {
              
              self.selectedAccount = accounts[0];
              [self performSegueWithIdentifier:@"ShowTwitter" sender:self];
@@ -107,7 +107,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
     
     NSArray<ACAccount *> *accounts = [TTMAccountHelper twitterAccounts];
-    self.selectedAccount = [accounts objectAtIndex:buttonIndex];
+    self.selectedAccount = accounts[buttonIndex];
 
     [self performSegueWithIdentifier:@"ShowTwitter" sender:self];
 }

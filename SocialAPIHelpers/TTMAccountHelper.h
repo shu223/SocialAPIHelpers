@@ -12,12 +12,12 @@
 
 extern NSString * const TTMAccountErrorDomain;
 
-typedef enum {
+typedef NS_ENUM(unsigned int, TTMAccountError) {
     TTMAccountErrorUnknown = 0,
     TTMAccountErrorNotGranted,
     TTMAccountErrorNoAccounts,
     TTMAccountErrorCredentialNotRenewed
-} TTMAccountError;
+};
 
 
 #define kFBPermissionKeyEmail           @"email"
