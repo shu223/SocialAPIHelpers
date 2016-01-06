@@ -18,6 +18,14 @@ NSString * const TTMSocialErrorDomain = @"com.shu223.SocialAPIHelpers.TTMSocialH
 + (void)parseSLRequestResponseData:(NSData *)responseData
                            handler:(void (^)(id result, NSError *error))handler
 {
+    if (!responseData) {
+        NSError *error = [NSError errorWithDomain:TTMSocialErrorDomain
+                                             code:TTMSocialErrorEmptyResponseData
+                                         userInfo:@{ NSLocalizedDescriptionKey: @"response data is empty" }];
+        handler(nil, error);
+        return;
+    }
+    
     NSError *jsonError = nil;
     
     id jsonData = [NSJSONSerialization JSONObjectWithData:responseData

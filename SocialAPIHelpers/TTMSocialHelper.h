@@ -15,6 +15,7 @@ extern NSString * const TTMSocialErrorDomain;
 typedef NS_ENUM(unsigned int, TTMSocialError) {
     TTMSocialErrorUnknown = 0,
     TTMSocialErrorCredentialRenewed,
+    TTMSocialErrorEmptyResponseData,
 };
 
 
